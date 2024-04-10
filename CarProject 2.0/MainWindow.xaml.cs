@@ -8,26 +8,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CarProject_2._0.model;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace CarProject_2._0
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
 
+            DbAccess dbAccess = new DbAccess();
+            UserModel userHandler = new UserModel(dbAccess);
+
+            User user1 = new User("1", "user1", "password1");
+            User user2 = new User("2", "user2", "password2");
+
+            User[] usersToInsert = new User[] { user1, user2 };
+            userHandler.InsertUsers(usersToInsert);
+
+
             MongoClient dbClient = new MongoClient("mongodb://localhost:27017");
 
             var database = dbClient.GetDatabase("TuningConfigurator");
             var collection = database.GetCollection<BsonDocument>("Properties");
             var document = collection.Find(Builders<BsonDocument>.Filter.Empty).FirstOrDefault();
-
 
             progressPower.Value = document.GetValue("Power").AsInt32;
             progressPerformance.Value = document.GetValue("Performance").AsInt32;
@@ -39,32 +46,22 @@ namespace CarProject_2._0
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            
-
             teststackPanel.Visibility = Visibility.Visible;
-
-            /*
-            Console.WriteLine("The list of databases on this server is: ");
-            foreach (var db in dbList)
-            {
-                Console.WriteLine(db);
-            }*/
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-
+            // Your code for Button_Click_3
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            // Your code for Button_Click_1
         }
 
         private void balanceText_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            // Your code for balanceText_TextChanged
         }
-
     }
 }

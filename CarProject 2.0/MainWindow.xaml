@@ -10,7 +10,7 @@
                 Title="MainWindow" Height="798" Width="1483">
 
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Student\Documents\Kurzzeitpraktikum\CarTuningConfigurator\CarTuningConfigurator\img\image.png"/>
+        <ImageBrush ImageSource="\img\image.png"/>
     </Window.Background>
 
 
