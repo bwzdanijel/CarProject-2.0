@@ -39,8 +39,8 @@
             <Grid Height="645">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="415*"/>
-                    <ColumnDefinition Width="634*"/>
-                    <ColumnDefinition Width="434*"/>
+                    <ColumnDefinition Width="474*"/>
+                    <ColumnDefinition Width="594*"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
@@ -69,25 +69,86 @@
                         <ProgressBar Height="26" Name="progressNitrous" Width="220" Value="0" Maximum="100" Background="#FFC5C5C5" Foreground="#FF2930DF" BorderBrush="Black"/>
                     </WrapPanel>
                 </StackPanel>
-                <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="66,378,0,0" VerticalAlignment="Top" Height="138" Width="276" Click="Button_Click_2"/>
-                
-                <StackPanel Grid.Column="2" Name="teststackPanel" Visibility="Collapsed">
-                    <ToolBarPanel Height="100"/>
-                    <Button Content="Button"/>
+
+
+
+
+                <!--Invisibility-->
+                <StackPanel Grid.Column="2" Name="teststackPanel">
+                    <DockPanel Height="71" LastChildFill="False" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button Name="buttonEngine" Content="Engine" FontSize="15" FontWeight="Bold" Foreground="White" BorderBrush="Transparent" Background="#FF407CAE" DockPanel.Dock="Left" Width="100" Height="46" BorderThickness="3" Click="buttonEngine_Click" />
+                        <Button Name="buttonSpoiler" Content="Spoiler" FontSize="15" FontWeight="Bold" Foreground="White" BorderBrush="Transparent" Background="#FF407CAE" DockPanel.Dock="Left" Width="100" Height="46" BorderThickness="3" Click="buttonSpoiler_Click"/>
+                        <Button Name="buttonBreaks" Content="Breaks" FontSize="15" FontWeight="Bold" Foreground="White" BorderBrush="Transparent" Background="#FF407CAE" DockPanel.Dock="Left" Width="100" Height="46" BorderThickness="3"/>
+                        <Button Name="buttonTires" Content="Tires" FontSize="15" FontWeight="Bold" Foreground="White" BorderBrush="Transparent" Background="#FF407CAE" DockPanel.Dock="Left" Width="100" Height="46" BorderThickness="3"/>
+                        <Button Name="buttonNitrous" Content="Nitrous" FontSize="15" FontWeight="Bold" Foreground="White" BorderBrush="Transparent" Background="#FF407CAE" DockPanel.Dock="Left" Width="100" Height="46" BorderThickness="3"/>
+                    </DockPanel>
+
+                    <!--INVISIBLE   ENGINE   STACK PANEL-->
+                    <StackPanel Name="panelEngine" Visibility="Visible">
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                            <Image Source="\img\edgyengine.png" Width="141" />
+                        </Label>
+                        <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">EDGY ENGINE</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                        <Button Content="BUY" Name="oneone" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="oneone_Click" />
+                    </DockPanel>
+                    <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="449">
+                        <Label>
+                            <Image Source="/img/edgyengine.png" Width="141" />
+                        </Label>
+                        <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"><Run FontWeight="Bold" Text="EDGY ENGINE"/><LineBreak /><Run Text="+5 Power"/><LineBreak /><Run Text="-2 acceleration"/><LineBreak /><Run Text="Price: 1'500"/></TextBlock>
+                        <Button Content="BUY" Name="onetwo" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="onetwo_Click" />
+                    </DockPanel>
+                    <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="449">
+                        <Label>
+                            <Image Source="/img/edgyengine.png" Width="141" />
+                        </Label>
+                        <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"><Run FontWeight="Bold" Text="EDGY ENGINE"/><LineBreak /><Run Text="+5 Power"/><LineBreak /><Run Text="-2 acceleration"/><LineBreak /><Run Text="Price: 1'500"/></TextBlock>
+                        <Button Content="BUY" Name="onethree" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="onethree_Click" />
+                    </DockPanel>
+                    </StackPanel>
+
+
+                    <!--INVISIBLE   SPOILER   STACK PANEL-->
+                    <StackPanel Name="panelSpoiler" Visibility="Collapsed">
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\spoilllyspoiler.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily Spoiler</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="twoone" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="twoone_Click" />
+                        </DockPanel>
+
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\spoilllyspoiler.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily Spoiler</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="twotwo" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="twotwo_Click" />
+                        </DockPanel>
+
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\spoilllyspoiler.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily Spoiler</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="twothree" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="twothree_Click" />
+                        </DockPanel>
+
+                    </StackPanel>
+
+
+
+
                 </StackPanel>
 
             </Grid>
 
-
-            <DockPanel LastChildFill="False" Height="74" Width="1480">
-                <StackPanel>
-                    <Button Content="Back" FontSize="25" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="159" Height="52" Margin="20,10,30,10" Click="Button_Click_3" />
-                </StackPanel>
-            </DockPanel>
-
-
         </StackPanel>
 
+        <Grid Height="74" Width="1480" Margin="0,0,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button Content="Back" FontSize="25" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="159" Height="52" Margin="20,10,30,10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        </Grid>
 
     </Grid>
 

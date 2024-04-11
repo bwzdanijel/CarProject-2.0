@@ -11,8 +11,10 @@
 
   <ItemGroup>
     <None Remove="img\5206272.png" />
+    <None Remove="img\edgyengine.png" />
     <None Remove="img\Hamburger_icon.svg.png" />
     <None Remove="img\image.png" />
+    <None Remove="img\spoilllyspoiler.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,8 +23,10 @@
 
   <ItemGroup>
     <Resource Include="img\5206272.png" />
+    <Resource Include="img\edgyengine.png" />
     <Resource Include="img\Hamburger_icon.svg.png" />
     <Resource Include="img\image.png" />
+    <Resource Include="img\spoilllyspoiler.png" />
   </ItemGroup>
 
 </Project>
