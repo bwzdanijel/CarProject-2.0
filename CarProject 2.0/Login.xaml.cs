@@ -1,4 +1,7 @@
-﻿using CarProject_2._0.model;
+﻿using CarProject_2._0.controller;
+using CarProject_2._0.model;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +23,35 @@ namespace CarProject_2._0
     /// </summary>
     public partial class Login : Window
     {
+
         public Login()
         {
             InitializeComponent();
+
         }
 
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Password;
+
+            UserController userController = new UserController();
+            bool isAuthenticated = userController.Login(username, password);
+
+            if (isAuthenticated)
+            {
+                MessageBox.Show("Login successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+
+                
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
