@@ -25,22 +25,72 @@ namespace CarProject_2._0
         {
             teststackPanel.Visibility = Visibility.Visible;
 
-            Login login = new Login();
+            /*
+            Console.WriteLine("The list of databases on this server is: ");
+            foreach (var db in dbList)
+            {
+                Console.WriteLine(db);
+            }*/
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            // Your code for Button_Click_3
-        }
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            // Your code for Button_Click_1
+
         }
 
         private void balanceText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Your code for balanceText_TextChanged
+
+        }
+
+
+        private void buttonEngine_Click(object sender, RoutedEventArgs e)
+        {
+            panelEngine.Visibility = Visibility.Visible;
+            panelSpoiler.Visibility = Visibility.Collapsed;
+        }
+
+        private void buttonSpoiler_Click(object sender, RoutedEventArgs e)
+        {
+            panelEngine.Visibility = Visibility.Collapsed;
+            panelSpoiler.Visibility = Visibility.Visible;
+        }
+
+
+
+
+        //ones
+        private void oneone_Click(object sender, RoutedEventArgs e)
+        {
+            oneone.Content = "use";
+        }
+
+        private void onetwo_Click(object sender, RoutedEventArgs e)
+        {
+            onetwo.Content = "use";
+        }
+
+        private void onethree_Click(object sender, RoutedEventArgs e)
+        {
+            onethree.Content = "use";
+        }
+
+        //twos
+        private void twoone_Click(object sender, RoutedEventArgs e)
+        {
+            twoone.Content = "use";
+        }
+
+        private void twotwo_Click(object sender, RoutedEventArgs e)
+        {
+            twotwo.Content = "use";
+        }
+
+        private void twothree_Click(object sender, RoutedEventArgs e)
+        {
+            twothree.Content = "use";
         }
     }
 }
