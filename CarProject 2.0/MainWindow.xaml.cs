@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -25,9 +26,12 @@ namespace CarProject_2._0
             MongoClient dbClient = new MongoClient("mongodb://localhost:27017");
 
             var database = dbClient.GetDatabase("TuningConfigurator");
+
             var collection = database.GetCollection<BsonDocument>("Properties");
             var document = collection.Find(Builders<BsonDocument>.Filter.Empty).FirstOrDefault();
 
+            var collection2 = database.GetCollection<BsonDocument>("User");
+            var document2 = collection2.Find(Builders<BsonDocument>.Filter.Empty).FirstOrDefault();
 
             progressPower.Value = document.GetValue("Power").AsInt32;
             progressPerformance.Value = document.GetValue("Performance").AsInt32;
@@ -35,7 +39,33 @@ namespace CarProject_2._0
             progressGrip.Value = document.GetValue("Grip").AsInt32;
             progressSteering.Value = document.GetValue("Steering").AsInt32;
             progressNitrous.Value = document.GetValue("Nitrous").AsInt32;
+
+            //balanceText.Text = document2.GetValue("Balance").ToString("#,##0");
+
+            int balance = document2.GetValue("Balance").AsInt32;
+            balanceText.Text = balance.ToString("#,##0");
+
+
+            //crate a document in collection
+            /*
+            MongoClient createMongo = new MongoClient("mongodb://localhost:27017");
+            var cdb = createMongo.GetDatabase("TuningConfigurator");
+            var createcollection = cdb.GetCollection<BsonDocument>("User");
+
+            BsonDocument createDocument = new BsonDocument()
+            {
+                { "User", "Mademidda187" },
+                { "Password", "xyz" },
+                { "Balance", 100700 },
+
+
+            };
+
+            createcollection.InsertOne(createDocument);
+            */
+
         }
+
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -74,6 +104,8 @@ namespace CarProject_2._0
         {
             panelEngine.Visibility = Visibility.Collapsed;
             panelSpoiler.Visibility = Visibility.Visible;
+
+            
         }
 
 
@@ -82,17 +114,79 @@ namespace CarProject_2._0
         //ones
         private void oneone_Click(object sender, RoutedEventArgs e)
         {
-            oneone.Content = "use";
+            DBconnection dbconnectionUser = new DBconnection();
+            BsonDocument documentUser = dbconnectionUser.UserConnection();
+            IMongoCollection<BsonDocument> collectionUsers = dbconnectionUser.GetUserCollection();
+
+
+
+
+            if ((String)oneone.Content == "BUY")
+            {
+                int newBalanceEngine1 = documentUser.GetValue("Balance").AsInt32;
+
+                if (newBalanceEngine1 >= 1500) 
+                {
+                    int result = newBalanceEngine1 - 1500;
+
+                    var filter = Builders<BsonDocument>.Filter.Eq("Balance", newBalanceEngine1);
+                    var update = Builders<BsonDocument>.Update.Set("Balance", result);
+
+                    collectionUsers.UpdateOne(filter, update);
+
+                    int balance2 = result;
+                    balanceText.Text = balance2.ToString("#,##0");
+
+                }
+                else
+                {
+                    MessageBox.Show("You are too broke", "Not enough money to buy this", MessageBoxButton.OK, MessageBoxImage.Stop);
+                }
+
+                oneone.Content = "use";
+
+
+
+
+
+            }
+            else if ((String)oneone.Content == "use")
+            {
+                oneone.Content = "used";
+                onetwo.Content = "use";
+                onethree.Content = "use";
+            }
+
         }
 
         private void onetwo_Click(object sender, RoutedEventArgs e)
         {
-            onetwo.Content = "use";
+            if ((String)onetwo.Content == "BUY")
+            {
+                onetwo.Content = "use";
+            }
+            else if ((String)onetwo.Content == "use")
+            {
+                onetwo.Content = "used";
+                oneone.Content = "use";
+                onethree.Content = "use";
+            }
+
         }
 
         private void onethree_Click(object sender, RoutedEventArgs e)
         {
-            onethree.Content = "use";
+            if ((String)onethree.Content == "BUY")
+            {
+                onethree.Content = "use";
+            }
+            else if ((String)onethree.Content == "use")
+            {
+                onethree.Content = "used";
+                onetwo.Content = "use";
+                oneone.Content = "use";
+            }
+
         }
 
         //twos
