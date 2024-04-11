@@ -51,10 +51,7 @@ namespace CarProject_2._0
             }*/
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -66,5 +63,52 @@ namespace CarProject_2._0
 
         }
 
+
+        private void buttonEngine_Click(object sender, RoutedEventArgs e)
+        {
+            panelEngine.Visibility = Visibility.Visible;
+            panelSpoiler.Visibility = Visibility.Collapsed;
+        }
+
+        private void buttonSpoiler_Click(object sender, RoutedEventArgs e)
+        {
+            panelEngine.Visibility = Visibility.Collapsed;
+            panelSpoiler.Visibility = Visibility.Visible;
+        }
+
+
+
+
+        //ones
+        private void oneone_Click(object sender, RoutedEventArgs e)
+        {
+            oneone.Content = "use";
+        }
+
+        private void onetwo_Click(object sender, RoutedEventArgs e)
+        {
+            onetwo.Content = "use";
+        }
+
+        private void onethree_Click(object sender, RoutedEventArgs e)
+        {
+            onethree.Content = "use";
+        }
+
+        //twos
+        private void twoone_Click(object sender, RoutedEventArgs e)
+        {
+            twoone.Content = "use";
+        }
+
+        private void twotwo_Click(object sender, RoutedEventArgs e)
+        {
+            twotwo.Content = "use";
+        }
+
+        private void twothree_Click(object sender, RoutedEventArgs e)
+        {
+            twothree.Content = "use";
+        }
     }
 }
