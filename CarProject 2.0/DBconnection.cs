@@ -56,5 +56,10 @@ namespace CarProject_2._0
         {
             return collectionUsers;
         }
+
+        public IMongoCollection<BsonDocument> GetEngineCollection()
+        {
+            return collectionEngine;
+        }
     }
 }
