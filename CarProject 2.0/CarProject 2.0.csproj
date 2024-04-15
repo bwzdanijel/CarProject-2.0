@@ -10,11 +10,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="NewFolder\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="NewFolder\**" />
+    <Page Remove="NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="img\100p.png" />
+    <None Remove="img\20p.png" />
     <None Remove="img\5206272.png" />
-    <None Remove="img\edgyengine.png" />
+    <None Remove="img\60p.png" />
+    <None Remove="img\brakeBlack.png" />
+    <None Remove="img\brakeRed.png" />
+    <None Remove="img\brakeSilver.png" />
+    <None Remove="img\ferrariEngine.png" />
     <None Remove="img\Hamburger_icon.svg.png" />
     <None Remove="img\image.png" />
+    <None Remove="img\redEngine.png" />
+    <None Remove="img\silverEngine.png" />
+    <None Remove="img\spoilerBlack.png" />
+    <None Remove="img\spoilerSilver.png" />
     <None Remove="img\spoilllyspoiler.png" />
+    <None Remove="img\tiresBlue.png" />
+    <None Remove="img\tiresFer.png" />
+    <None Remove="img\tiresNormal.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,11 +42,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="img\100p.png" />
+    <Resource Include="img\20p.png" />
     <Resource Include="img\5206272.png" />
-    <Resource Include="img\edgyengine.png" />
+    <Resource Include="img\60p.png" />
+    <Resource Include="img\brakeBlack.png" />
+    <Resource Include="img\brakeRed.png" />
+    <Resource Include="img\brakeSilver.png" />
+    <Resource Include="img\ferrariEngine.png" />
     <Resource Include="img\Hamburger_icon.svg.png" />
     <Resource Include="img\image.png" />
+    <Resource Include="img\redEngine.png" />
+    <Resource Include="img\silverEngine.png" />
+    <Resource Include="img\spoilerBlack.png" />
+    <Resource Include="img\spoilerSilver.png" />
     <Resource Include="img\spoilllyspoiler.png" />
+    <Resource Include="img\tiresBlue.png" />
+    <Resource Include="img\tiresFer.png" />
+    <Resource Include="img\tiresNormal.png" />
   </ItemGroup>
 
 </Project>

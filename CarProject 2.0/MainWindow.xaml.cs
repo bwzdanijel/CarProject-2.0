@@ -8,20 +8,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using CarProject_2._0.model;
+
 using System.Xml.Linq;
+
 using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace CarProject_2._0
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+
 
 
             MongoClient dbClient = new MongoClient("mongodb://localhost:27017");
@@ -160,13 +162,12 @@ namespace CarProject_2._0
                 }
             }
 
+
         }
 
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            
-
             teststackPanel.Visibility = Visibility.Visible;
 
             /*
@@ -501,12 +502,56 @@ namespace CarProject_2._0
             twothree.Content = "use";
         }
 
+
+        private void brake1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void brake2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void brake3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tires1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tires2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tires3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void nitrous1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void nitrous2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void nitrous3_Click(object sender, RoutedEventArgs e)
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
         private void usernameText_TextChanged(object sender, TextChangedEventArgs e)
+
         {
 
         }

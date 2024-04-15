@@ -10,7 +10,7 @@
                 Title="MainWindow" Height="798" Width="1483">
 
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Student\Documents\Kurzzeitpraktikum\CarTuningConfigurator\CarTuningConfigurator\img\image.png"/>
+        <ImageBrush ImageSource="\img\image.png"/>
     </Window.Background>
 
 
@@ -87,21 +87,21 @@
                     <StackPanel Name="panelEngine" Visibility="Collapsed">
                         <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
                             <Label>
-                            <Image Source="\img\edgyengine.png" Width="141" />
+                                <Image Source="\img\redEngine.png" Width="141" />
                         </Label>
                         <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">EDGY ENGINE</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
                         <Button Content="BUY" Name="oneone" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="oneone_Click" />
                     </DockPanel>
                     <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="449">
                         <Label>
-                            <Image Source="/img/edgyengine.png" Width="141" />
+                                <Image Source="/img/ferrariEngine.png" Width="141" />
                         </Label>
                         <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"><Run FontWeight="Bold" Text="EDGY ENGINE"/><LineBreak /><Run Text="+5 Power"/><LineBreak /><Run Text="-2 acceleration"/><LineBreak /><Run Text="Price: 1'500"/></TextBlock>
                         <Button Content="BUY" Name="onetwo" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="onetwo_Click" />
                     </DockPanel>
                     <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="449">
                         <Label>
-                            <Image Source="/img/edgyengine.png" Width="141" />
+                                <Image Source="/img/silverEngine.png" Width="141" />
                         </Label>
                         <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"><Run FontWeight="Bold" Text="EDGY ENGINE"/><LineBreak /><Run Text="+5 Power"/><LineBreak /><Run Text="-2 acceleration"/><LineBreak /><Run Text="Price: 1'500"/></TextBlock>
                         <Button Content="BUY" Name="onethree" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="onethree_Click" />
@@ -113,17 +113,17 @@
                     <StackPanel Name="panelSpoiler" Visibility="Visible">
                         <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
                             <Label>
-                                <Image Source="\img\spoilllyspoiler.png" Width="141" />
+                                <Image Source="\img\spoilerBlack.png" Width="141" />
                             </Label>
-                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily Spoiler</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily SPOILER</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
                             <Button Content="BUY" Name="twoone" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="twoone_Click" />
                         </DockPanel>
 
                         <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
                             <Label>
-                                <Image Source="\img\spoilllyspoiler.png" Width="141" />
+                                <Image Source="\img\spoilerSilver.png" Width="141" />
                             </Label>
-                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily Spoiler</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily SPOILER</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
                             <Button Content="BUY" Name="twotwo" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="twotwo_Click" />
                         </DockPanel>
 
@@ -131,13 +131,94 @@
                             <Label>
                                 <Image Source="\img\spoilllyspoiler.png" Width="141" />
                             </Label>
-                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily Spoiler</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily SPOILER</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
                             <Button Content="BUY" Name="twothree" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="twothree_Click" />
                         </DockPanel>
-
                     </StackPanel>
 
 
+                    <!--INVISIBLE   BRAKES   STACK PANEL-->
+                    <StackPanel Name="panelBrake" Visibility="Collapsed">
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\brakeBlack.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily BRAKES</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="brake1" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="brake1_Click"/>
+                        </DockPanel>
+
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\brakeRed.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily BRAKES</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="brake2" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="brake2_Click"/>
+                        </DockPanel>
+
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\brakeSilver.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily BRAKES</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="brake3" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="brake3_Click"/>
+                        </DockPanel>
+                    </StackPanel>
+
+
+                    <!--INVISIBLE   TIRES   STACK PANEL-->
+                    <StackPanel Name="panelTires" Visibility="Collapsed">
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\tiresBlue.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily TIRES</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="tires1" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="tires1_Click"/>
+                        </DockPanel>
+
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\tiresFer.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily TIRES</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="tires2" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="tires2_Click"/>
+                        </DockPanel>
+
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\tiresNormal.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">Spoily TIRES</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="tires3" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="tires3_Click"/>
+                        </DockPanel>
+                    </StackPanel>
+
+
+                    <!--INVISIBLE   NIRTOUS   STACK PANEL-->
+                    <StackPanel Name="panelNitrous" Visibility="Collapsed">
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\20p.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">20% OF NIRTOUS</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="nitrous1" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="nitrous1_Click"/>
+                        </DockPanel>
+
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\60p.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">60% OF NIRTOUS</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="nitrous2" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="nitrous2_Click"/>
+                        </DockPanel>
+
+                        <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
+                            <Label>
+                                <Image Source="\img\100p.png" Width="141" />
+                            </Label>
+                            <TextBlock TextAlignment="Center" Width="153" Foreground="White" Background="#FF7A6F63" Height="77" FontSize="13"> <Run FontWeight="Bold">100% OF NIRTOUS</Run> <LineBreak /> +5 Power <LineBreak /> -2 acceleration <LineBreak /> Price: 1'500</TextBlock>
+                            <Button Content="BUY" Name="nitrous3" Width="87" Height="45" Background="#FF407CAE" Foreground="White" FontWeight="Bold" FontSize="22" Click="nitrous3_Click"/>
+                        </DockPanel>
+                    </StackPanel>
 
 
                 </StackPanel>
