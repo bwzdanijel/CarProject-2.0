@@ -18,7 +18,8 @@ namespace CarProject_2._0
     {
         public MainWindow()
         {
-           
+            InitializeComponent();
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -91,6 +92,51 @@ namespace CarProject_2._0
         private void twothree_Click(object sender, RoutedEventArgs e)
         {
             twothree.Content = "use";
+        }
+
+        private void brake1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void brake2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void brake3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tires1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tires2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tires3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void nitrous1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void nitrous2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void nitrous3_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

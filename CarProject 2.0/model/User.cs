@@ -1,22 +1,31 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CarProject_2._0.model
 {
-    class User
+    public class User
     {
-        public string Id { get; set; }
-        public string Username { get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
         public string Password { get; set; }
+        public string Role { get; set; }
+        public int Balance { get; set; }
 
-        public User(string id, string username, string password)
+        public User() { }
+
+        public User(string name, string password, string role, int balance)
         {
-            Id = id;
-            Username = username;
+            Name = name;
             Password = password;
+            Role = role;
+            Balance = balance;
         }
     }
 }

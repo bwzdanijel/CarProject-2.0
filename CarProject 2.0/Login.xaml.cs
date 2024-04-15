@@ -27,25 +27,24 @@ namespace CarProject_2._0
         public Login()
         {
             InitializeComponent();
-
         }
+
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Password;
 
+            DbAccess dbAccess = new DbAccess();
             UserController userController = new UserController();
+            userController.InsertInitialUsers();
+
             bool isAuthenticated = userController.Login(username, password);
 
             if (isAuthenticated)
             {
-                MessageBox.Show("Login successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
-
-                
                 this.Close();
             }
             else
@@ -53,5 +52,6 @@ namespace CarProject_2._0
                 MessageBox.Show("Invalid username or password.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
     }
 }

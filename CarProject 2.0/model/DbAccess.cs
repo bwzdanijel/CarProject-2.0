@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -23,7 +24,6 @@ namespace CarProject_2._0.model
         {
             _mongoClient = new MongoClient("mongodb://localhost:27017");
             _database = _mongoClient.GetDatabase("TuningConfigurator");
-            Console.WriteLine("Connected to the database successfully");
         }
 
         public void CreateCollection(string collectionName)

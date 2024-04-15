@@ -17,19 +17,15 @@ namespace CarProject_2._0.controller
         {
             DbAccess dbAccess = new DbAccess();
             userHandler = new UserModel(dbAccess);
-
-            // Move user insertion to a method or constructor
-            InsertInitialUsers();
         }
 
-        // Method to insert initial users
-        private void InsertInitialUsers()
+        public void InsertInitialUsers()
         {
-            User user1 = new User("1", "user1", "password1");
-            User user2 = new User("2", "user2", "password2");
+            User user1 = new User("user1", "password1", "Admin", 23420);
+            User user2 = new User("user2", "password2", "Player", 23420);
 
             User[] usersToInsert = new User[] { user1, user2 };
-            userHandler.InsertUsers(usersToInsert);
+            userHandler.AddUser(usersToInsert);
         }
 
 
