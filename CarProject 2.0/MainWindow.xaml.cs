@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.DirectoryServices.ActiveDirectory;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CarProject_2._0.controller;
 using CarProject_2._0.model;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -16,9 +18,15 @@ namespace CarProject_2._0
 {
     public partial class MainWindow : Window
     {
+        private MainController mainController = new MainController();
+        private Car selectedCar; 
+        private CarModel selectedCarModel;
+        private DbAccess dbAccess;
+
         public MainWindow()
         {
             InitializeComponent();
+            selectedCarModel = new CarModel(dbAccess);
 
         }
 
@@ -46,54 +54,137 @@ namespace CarProject_2._0
 
         }
 
-
+        ////////////////Button Navigation List /////////////////////////////////////////////////////////////////////////////////
         private void buttonEngine_Click(object sender, RoutedEventArgs e)
         {
             panelEngine.Visibility = Visibility.Visible;
             panelSpoiler.Visibility = Visibility.Collapsed;
+            panelBrake.Visibility = Visibility.Collapsed;
+            panelTires.Visibility = Visibility.Collapsed;
+            panelNitrous.Visibility = Visibility.Collapsed;
         }
 
         private void buttonSpoiler_Click(object sender, RoutedEventArgs e)
         {
             panelEngine.Visibility = Visibility.Collapsed;
             panelSpoiler.Visibility = Visibility.Visible;
+            panelBrake.Visibility = Visibility.Collapsed;
+            panelTires.Visibility = Visibility.Collapsed;
+            panelNitrous.Visibility = Visibility.Collapsed;
         }
 
-
-
-
-        //ones
-        private void oneone_Click(object sender, RoutedEventArgs e)
+        private void buttonBrake_Click(object sender, RoutedEventArgs e)
         {
-            oneone.Content = "use";
+            panelEngine.Visibility = Visibility.Collapsed;
+            panelSpoiler.Visibility = Visibility.Collapsed;
+            panelBrake.Visibility = Visibility.Visible;
+            panelTires.Visibility = Visibility.Collapsed;
+            panelNitrous.Visibility = Visibility.Collapsed;
         }
 
-        private void onetwo_Click(object sender, RoutedEventArgs e)
+        private void buttonTires_Click(object sender, RoutedEventArgs e)
         {
-            onetwo.Content = "use";
+            panelEngine.Visibility = Visibility.Collapsed;
+            panelSpoiler.Visibility = Visibility.Collapsed;
+            panelBrake.Visibility = Visibility.Collapsed;
+            panelTires.Visibility = Visibility.Visible;
+            panelNitrous.Visibility = Visibility.Collapsed;
         }
 
-        private void onethree_Click(object sender, RoutedEventArgs e)
+        private void buttonNitrous_Click(object sender, RoutedEventArgs e)
         {
-            onethree.Content = "use";
+            panelEngine.Visibility = Visibility.Collapsed;
+            panelSpoiler.Visibility = Visibility.Collapsed;
+            panelBrake.Visibility = Visibility.Collapsed;
+            panelTires.Visibility = Visibility.Collapsed;
+            panelNitrous.Visibility = Visibility.Visible;
         }
 
-        //twos
-        private void twoone_Click(object sender, RoutedEventArgs e)
+
+
+
+
+        ////////////////RadioButton Navigation List /////////////////////////////////////////////////////////////////////////////////
+
+
+        private void redCarButton_Checked(object sender, RoutedEventArgs e)
         {
-            twoone.Content = "use";
+            panelRedCar.Visibility = Visibility.Visible;
+            panelBlueCar.Visibility = Visibility.Collapsed;
+            panelLamboCar.Visibility = Visibility.Collapsed;
+
         }
 
-        private void twotwo_Click(object sender, RoutedEventArgs e)
+        private void blueCarButton_Checked(object sender, RoutedEventArgs e)
         {
-            twotwo.Content = "use";
+            panelRedCar.Visibility = Visibility.Collapsed;
+            panelBlueCar.Visibility = Visibility.Visible;
+            panelLamboCar.Visibility = Visibility.Collapsed;
+
         }
 
-        private void twothree_Click(object sender, RoutedEventArgs e)
+        private void lamboCarButton_Checked(object sender, RoutedEventArgs e)
         {
-            twothree.Content = "use";
+            panelRedCar.Visibility = Visibility.Collapsed;
+            panelBlueCar.Visibility = Visibility.Collapsed;
+            panelLamboCar.Visibility = Visibility.Visible;
+
         }
 
+
+        ////////////////Select Button/////////////////////////////////////////////////////////////////////////////////
+        private void redCarButton1_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+
+        private void bluCarButton2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lamboCarButton3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        //ENGINE
+        private void engine1_Click(object sender, RoutedEventArgs e)
+        {
+            engine1.Content = "use";
+
+        }
+        private void engine2_Click(object sender, RoutedEventArgs e)
+        {
+            engine2.Content = "use";
+        }
+
+        private void engine3_Click(object sender, RoutedEventArgs e)
+        {
+            engine3.Content = "use";
+        }
+
+
+        //SPOILER
+        private void spoiler1_Click(object sender, RoutedEventArgs e)
+        {
+            spoiler1.Content = "use";
+        }
+
+        private void spoiler2_Click(object sender, RoutedEventArgs e)
+        {
+            spoiler2.Content = "use";
+        }
+
+        private void spoiler3_Click(object sender, RoutedEventArgs e)
+        {
+            spoiler3.Content = "use";
+        }
+
+
+        //BRAKE
         private void brake1_Click(object sender, RoutedEventArgs e)
         {
 
@@ -109,9 +200,9 @@ namespace CarProject_2._0
 
         }
 
+        //TIRES
         private void tires1_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void tires2_Click(object sender, RoutedEventArgs e)
@@ -121,9 +212,9 @@ namespace CarProject_2._0
 
         private void tires3_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
+        //NITROUS
         private void nitrous1_Click(object sender, RoutedEventArgs e)
         {
 

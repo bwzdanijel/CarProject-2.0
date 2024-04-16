@@ -24,6 +24,9 @@
     <None Remove="img\brakeBlack.png" />
     <None Remove="img\brakeRed.png" />
     <None Remove="img\brakeSilver.png" />
+    <None Remove="img\carBlue.png" />
+    <None Remove="img\carLambo.png" />
+    <None Remove="img\carRed.png" />
     <None Remove="img\ferrariEngine.png" />
     <None Remove="img\Hamburger_icon.svg.png" />
     <None Remove="img\image.png" />
@@ -49,6 +52,9 @@
     <Resource Include="img\brakeBlack.png" />
     <Resource Include="img\brakeRed.png" />
     <Resource Include="img\brakeSilver.png" />
+    <Resource Include="img\carBlue.png" />
+    <Resource Include="img\carLambo.png" />
+    <Resource Include="img\carRed.png" />
     <Resource Include="img\ferrariEngine.png" />
     <Resource Include="img\Hamburger_icon.svg.png" />
     <Resource Include="img\image.png" />

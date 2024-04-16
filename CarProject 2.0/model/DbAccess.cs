@@ -31,6 +31,5 @@ namespace CarProject_2._0.model
             _database.CreateCollection(collectionName);
             Console.WriteLine($"Collection {collectionName} created successfully");
         }
-
     }
 }
