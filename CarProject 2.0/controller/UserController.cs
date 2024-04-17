@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarProject_2._0.controller
 {
-    class UserController
+    public class UserController
     {
         private UserModel userHandler;
 
@@ -28,8 +28,15 @@ namespace CarProject_2._0.controller
             userHandler.AddUser(usersToInsert);
         }
 
-
+        /*
         public bool Login(string username, string password)
+        {
+            return userHandler.AuthenticateUser(username, password);
+        }
+
+        */
+
+        public User AuthenticateUser(string username, string password)
         {
             return userHandler.AuthenticateUser(username, password);
         }

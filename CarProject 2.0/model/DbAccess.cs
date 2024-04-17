@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,5 @@ namespace CarProject_2._0.model
             _database.CreateCollection(collectionName);
             Console.WriteLine($"Collection {collectionName} created successfully");
         }
-
     }
 }
