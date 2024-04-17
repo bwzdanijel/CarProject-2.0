@@ -20,7 +20,7 @@ using MongoDB.Driver;
 namespace CarProject_2._0
 {
     public partial class MainWindow : Window
-    { 
+    {
         private MainController mainController;
         private Guid loggedInUserId;
 
@@ -28,15 +28,11 @@ namespace CarProject_2._0
         {
             InitializeComponent();
             mainController = new MainController();
+            mainController.InsertCars();
         }
 
-        public MainWindow(Guid userId)
-        {
-            InitializeComponent();
-            mainController = new MainController();
-            loggedInUserId = userId;
 
-        }
+      
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -141,24 +137,21 @@ namespace CarProject_2._0
 
 
         ////////////////Select Button/////////////////////////////////////////////////////////////////////////////////
-        
+
 
         private void redCarButton1_Click(object sender, RoutedEventArgs e)
         {
-            mainController.SelectCarsForUser(new List<string> { "Red Monster" }, loggedInUserId);
-
+            mainController.CopyCarData(new List<string> { "Red Monster" }, loggedInUserId);
         }
 
         private void bluCarButton2_Click(object sender, RoutedEventArgs e)
         {
-            mainController.SelectCarsForUser(new List<string> { "Silver Bullet" }, loggedInUserId);
-
+            mainController.CopyCarData(new List<string> { "Silver Bullet" }, loggedInUserId);
         }
 
         private void lamboCarButton3_Click(object sender, RoutedEventArgs e)
         {
-            mainController.SelectCarsForUser(new List<string> { "Black Panther" }, loggedInUserId);
-
+            mainController.CopyCarData(new List<string> { "Black Panther" }, loggedInUserId);
         }
 
 

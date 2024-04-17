@@ -15,16 +15,17 @@ namespace CarProject_2._0.model
     public class CarTuningPartModel
     {
         private DbAccess dbAccess;
-        private IMongoCollection<User> _userCollection;
         private IMongoCollection<Car> _carCollection;
+        private IMongoCollection<Car> _carConfigurationCollection;
         private string collectionCar = "Car";
+        private string collectionCarConfiguration = "CarConfiguration";
 
         public CarTuningPartModel(DbAccess dbAccess)
         {
             this.dbAccess = dbAccess;
             dbAccess.DbConnection();
-            _userCollection = dbAccess.Database.GetCollection<User>("User");
             _carCollection = dbAccess.Database.GetCollection<Car>(collectionCar);
+            _carConfigurationCollection = dbAccess.Database.GetCollection<Car>(collectionCarConfiguration); // Initialisiere die CarConfiguration-Collection
         }
 
         public void AddCars(Car[] cars)
@@ -38,7 +39,7 @@ namespace CarProject_2._0.model
 
                 if (existingCar != null)
                 {
-                    
+
                 }
             }
         }
