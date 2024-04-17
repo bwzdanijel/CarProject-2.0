@@ -8,10 +8,12 @@ namespace CarProject_2._0.model
 {
     public class Car
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
-        public TuningPart TuningPart { get; set; } 
+        public TuningPart TuningPart { get; set; }
+
 
 
         public Car(string name, string brand, string model, TuningPart tuningPart)
@@ -21,6 +23,8 @@ namespace CarProject_2._0.model
             Model = model;
             TuningPart = tuningPart;
         }
+
+
     }
 
 }

@@ -23,31 +23,30 @@ namespace CarProject_2._0
     /// </summary>
     public partial class Login : Window
     {
+        private UserController userController;
 
         public Login()
         {
             InitializeComponent();
+            userController = new UserController();
         }
 
+        public Login(UserController userController)
+        {
+            InitializeComponent();
+            this.userController = userController;
+        }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Password;
 
-            DbAccess dbAccess = new DbAccess();
-            UserController userController = new UserController();
-            userController.InsertInitialUsers();
+            User authenticatedUser = userController.AuthenticateUser(username, password);
 
-
-            //MainController mainController = new MainController();
-            //mainController.InsertCars();
-
-            bool isAuthenticated = userController.Login(username, password);
-
-            if (isAuthenticated)
+            if (authenticatedUser != null)
             {
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(authenticatedUser.Id); // Übergebe die UserId anstatt des gesamten User-Objekts
                 mainWindow.Show();
                 this.Close();
             }
@@ -56,6 +55,5 @@ namespace CarProject_2._0
                 MessageBox.Show("Invalid username or password.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
     }
 }

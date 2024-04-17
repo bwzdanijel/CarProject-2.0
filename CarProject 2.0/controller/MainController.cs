@@ -9,7 +9,6 @@ namespace CarProject_2._0.controller
 {
     public class MainController
     {
-        private CarModel carModel;
         private CarTuningPartModel carTuningPartModel;
         private Car selectedCar;
 
@@ -33,31 +32,13 @@ namespace CarProject_2._0.controller
 
 
             Car[] CarsToInsert = new Car[] { car1, car2, car3 };
-            carModel.AddCars(CarsToInsert);
+            carTuningPartModel.AddCars(CarsToInsert);
         }
 
-        public void CopyCarToConfiguration(string carName)
+        public void CopyCarData (List<string> carNames, Guid userId)
         {
-            carTuningPartModel.CopyCarToConfiguration(carName);
+            carTuningPartModel.CopyCarData(carNames, userId);
         }
-        /*
-      public Car GetSelectedCar(string name)
-      {
-          return carTuningPartModel.GetCarByName(name);
-      }
 
-      /*
-      public void UpdateSelectedCarTuningPart(Car selectedCar, TuningPart tuningPart)
-      {
-          if (selectedCar != null)
-          {
-              carTuningPartModel.UpdateCarTuningPart(selectedCar.Name, selectedCar.Brand, tuningPart);
-          }
-          else
-          {
-              Console.WriteLine("Kein Auto ausgewählt!");
-          }
-      }
-      */
     }
 } 

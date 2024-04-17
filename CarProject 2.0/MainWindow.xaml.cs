@@ -21,15 +21,20 @@ namespace CarProject_2._0
 {
     public partial class MainWindow : Window
     { 
-        private MainController mainController = new MainController();
-        private Car selectedCar; 
-        private CarModel selectedCarModel;
-        private DbAccess dbAccess;
+        private MainController mainController;
+        private Guid loggedInUserId;
 
         public MainWindow()
         {
             InitializeComponent();
+            mainController = new MainController();
+        }
 
+        public MainWindow(Guid userId)
+        {
+            InitializeComponent();
+            mainController = new MainController();
+            loggedInUserId = userId;
 
         }
 
@@ -136,23 +141,21 @@ namespace CarProject_2._0
 
 
         ////////////////Select Button/////////////////////////////////////////////////////////////////////////////////
+        
+
         private void redCarButton1_Click(object sender, RoutedEventArgs e)
         {
-
-            MainController mainController = new MainController();
-            mainController.CopyCarToConfiguration("Red Monster");
-
-
+            mainController.CopyCarData(new List<string> { "Red Monster" }, loggedInUserId);
         }
 
         private void bluCarButton2_Click(object sender, RoutedEventArgs e)
         {
-
+            mainController.CopyCarData(new List<string> { "Silver Bullet" }, loggedInUserId);
         }
 
         private void lamboCarButton3_Click(object sender, RoutedEventArgs e)
         {
-
+            mainController.CopyCarData(new List<string> { "Black Panther" }, loggedInUserId);
         }
 
 
@@ -232,6 +235,9 @@ namespace CarProject_2._0
         }
 
         private void nitrous3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

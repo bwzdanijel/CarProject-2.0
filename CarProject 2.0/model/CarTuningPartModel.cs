@@ -15,37 +15,69 @@ namespace CarProject_2._0.model
     public class CarTuningPartModel
     {
         private DbAccess dbAccess;
-        private IMongoCollection<CarModel> _carModelCollection; // Hier sollte _carModelCollection sein, nicht _carCollection
         private IMongoCollection<Car> _carCollection;
+        private IMongoCollection<Car> _carConfigurationCollection;
+        private string collectionCar = "Car";
         private string collectionCarConfiguration = "CarConfiguration";
 
         public CarTuningPartModel(DbAccess dbAccess)
         {
             this.dbAccess = dbAccess;
             dbAccess.DbConnection();
-            _carModelCollection = dbAccess.Database.GetCollection<CarModel>(collectionCarConfiguration);
-            _carCollection = dbAccess.Database.GetCollection<Car>("Car"); // Initialisierung der _carCollection
+            _carCollection = dbAccess.Database.GetCollection<Car>(collectionCar);
+            _carConfigurationCollection = dbAccess.Database.GetCollection<Car>(collectionCarConfiguration); // Initialisiere die CarConfiguration-Collection
         }
 
-        public void CopyCarToConfiguration(string carName)
+        public void AddCars(Car[] cars)
         {
-            var filter = Builders<Car>.Filter.Eq(c => c.Name, carName);
-            var car = _carCollection.Find(filter).FirstOrDefault(); 
-
-            if (car != null)
+            foreach (Car car in cars)
             {
-                // Hier sollten Sie das Auto-Objekt in ein CarModel-Objekt umwandeln, bevor Sie es in die CarConfiguration-Collection einfügen
-                var carModel = new CarModel(dbAccess); // Neue Instanz von CarModel
-                carModel.AddCars(new Car[] { car }); // Fügen Sie das Auto der Car-Collection des CarModel-Objekts hinzu
+                _carCollection.InsertOne(car);
 
-                Console.WriteLine($"Auto '{carName}' wurde erfolgreich in die CarConfiguration kopiert.");
-            }
-            else
-            {
-                Console.WriteLine($"Auto '{carName}' wurde nicht gefunden.");
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, car.Name);
+                var existingCar = _carCollection.Find(filter).FirstOrDefault();
+
+                if (existingCar != null)
+                {
+                    Console.WriteLine($"Auto mit dem Namen '{car.Name}' bereits vorhanden.");
+                }
             }
         }
-    }
 
+        public List<Car> GetAllCars()
+        {
+            var result = _carCollection.Find(new BsonDocument()).ToList();
+            return result;
+        }
+
+        public void CopyCarData(List<string> carNames, Guid userId)
+        {
+            foreach (var carName in carNames)
+            {
+                try
+                {
+                    var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                    var carToCopy = _carCollection.Find(filter).FirstOrDefault();
+
+                    if (carToCopy != null)
+                    {
+                        carToCopy.Id = userId;
+
+                        _carConfigurationCollection.InsertOne(carToCopy);
+                        Console.WriteLine($"Das Auto mit dem Namen '{carName}' wurde erfolgreich in die CarConfiguration Collection kopiert.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Das Auto mit dem Namen '{carName}' wurde nicht in der Car Collection gefunden.");
+                    }
+                }
+                catch (MongoWriteException ex)
+                {
+                    Console.WriteLine($"Fehler beim Kopieren des Autos '{carName}': {ex.Message}");
+                }
+            }
+        }
+
+    }
 }
 

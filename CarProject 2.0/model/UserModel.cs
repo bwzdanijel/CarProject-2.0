@@ -41,7 +41,7 @@ namespace CarProject_2._0.model
             }
         }
 
-    
+    /*
         public bool AuthenticateUser(string username, string password)
         {
             // Hash the password
@@ -60,7 +60,7 @@ namespace CarProject_2._0.model
         }
 
 
-
+        */
         public void AddUser(User[] users)
         {
             foreach (var user in users)
@@ -81,6 +81,21 @@ namespace CarProject_2._0.model
                     Console.WriteLine($"User with username '{user.Name}' already exists.");
                 }
             }
+        }
+
+
+        public User AuthenticateUser(string username, string password)
+        {
+            string hashedPassword = GetHash(password);
+
+            var filter = Builders<User>.Filter.And(
+                             Builders<User>.Filter.Eq(u => u.Name, username),
+                             Builders<User>.Filter.Eq(u => u.Password, hashedPassword)
+                         );
+
+            var existingUser = _userCollection.Find(filter).FirstOrDefault();
+
+            return existingUser;
         }
     }
 }
