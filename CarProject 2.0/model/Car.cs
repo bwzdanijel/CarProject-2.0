@@ -13,6 +13,7 @@ namespace CarProject_2._0.model
         public string Model { get; set; }
         public TuningPart TuningPart { get; set; } 
 
+
         public Car(string name, string brand, string model, TuningPart tuningPart)
         {
             Name = name;

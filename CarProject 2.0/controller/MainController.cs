@@ -17,7 +17,7 @@ namespace CarProject_2._0.controller
         public MainController()
         {
             DbAccess dbAccess = new DbAccess();
-            carModel = new CarModel(dbAccess);
+            carTuningPartModel = new CarTuningPartModel(dbAccess);
         }
         public void InsertCars()
         {
@@ -36,6 +36,28 @@ namespace CarProject_2._0.controller
             carModel.AddCars(CarsToInsert);
         }
 
+        public void CopyCarToConfiguration(string carName)
+        {
+            carTuningPartModel.CopyCarToConfiguration(carName);
+        }
+        /*
+      public Car GetSelectedCar(string name)
+      {
+          return carTuningPartModel.GetCarByName(name);
+      }
 
+      /*
+      public void UpdateSelectedCarTuningPart(Car selectedCar, TuningPart tuningPart)
+      {
+          if (selectedCar != null)
+          {
+              carTuningPartModel.UpdateCarTuningPart(selectedCar.Name, selectedCar.Brand, tuningPart);
+          }
+          else
+          {
+              Console.WriteLine("Kein Auto ausgewählt!");
+          }
+      }
+      */
     }
 } 

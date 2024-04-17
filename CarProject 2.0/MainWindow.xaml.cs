@@ -17,7 +17,7 @@ using MongoDB.Driver;
 namespace CarProject_2._0
 {
     public partial class MainWindow : Window
-    {
+    { 
         private MainController mainController = new MainController();
         private Car selectedCar; 
         private CarModel selectedCarModel;
@@ -26,7 +26,7 @@ namespace CarProject_2._0
         public MainWindow()
         {
             InitializeComponent();
-            selectedCarModel = new CarModel(dbAccess);
+
 
         }
 
@@ -135,7 +135,10 @@ namespace CarProject_2._0
         ////////////////Select Button/////////////////////////////////////////////////////////////////////////////////
         private void redCarButton1_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            MainController mainController = new MainController();
+            mainController.CopyCarToConfiguration("Red Monster");
+
 
         }
 

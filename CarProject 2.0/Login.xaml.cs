@@ -40,8 +40,8 @@ namespace CarProject_2._0
             userController.InsertInitialUsers();
 
 
-            MainController mainController = new MainController();
-            mainController.InsertCars();
+            //MainController mainController = new MainController();
+            //mainController.InsertCars();
 
             bool isAuthenticated = userController.Login(username, password);
 

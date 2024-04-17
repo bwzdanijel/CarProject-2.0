@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace CarProject_2._0.model
 {
     public class CarModel
-    {
+    { 
         private List<Car> cars;
         private DbAccess dbAccess;
         private IMongoCollection<Car> _carCollection;
@@ -40,6 +41,16 @@ namespace CarProject_2._0.model
                     Console.WriteLine($"");
                 }
             }
+        }
+
+
+
+
+
+        public List<Car> GetAllCars()
+        {
+            var result = _carCollection.Find(new BsonDocument()).ToList();
+            return result;
         }
     }
 }
