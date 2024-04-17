@@ -34,11 +34,11 @@ namespace CarProject_2._0.controller
             Car[] CarsToInsert = new Car[] { car1, car2, car3 };
             carTuningPartModel.AddCars(CarsToInsert);
         }
-
+        
         public void CopyCarData (List<string> carNames, Guid userId)
         {
             carTuningPartModel.CopyCarData(carNames, userId);
         }
 
     }
-} 
+}
