@@ -10,13 +10,13 @@ namespace CarProject_2._0.controller
     public class MainController
     {
         private CarTuningPartModel carTuningPartModel;
-        private Car selectedCar;
-
+        private UserModel userModel;
 
         public MainController()
         {
             DbAccess dbAccess = new DbAccess();
             carTuningPartModel = new CarTuningPartModel(dbAccess);
+            userModel = new UserModel(dbAccess);
         }
         public void InsertCars()
         {
@@ -35,9 +35,9 @@ namespace CarProject_2._0.controller
             carTuningPartModel.AddCars(CarsToInsert);
         }
 
-        public void CopyCarData (List<string> carNames, Guid userId)
+        public void SelectCarsForUser(List<string> carNames, Guid userId)
         {
-            carTuningPartModel.CopyCarData(carNames, userId);
+            carTuningPartModel.SelectCarsForUser(carNames, userId);
         }
 
     }

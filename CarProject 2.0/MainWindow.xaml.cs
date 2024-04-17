@@ -145,17 +145,20 @@ namespace CarProject_2._0
 
         private void redCarButton1_Click(object sender, RoutedEventArgs e)
         {
-            mainController.CopyCarData(new List<string> { "Red Monster" }, loggedInUserId);
+            mainController.SelectCarsForUser(new List<string> { "Red Monster" }, loggedInUserId);
+
         }
 
         private void bluCarButton2_Click(object sender, RoutedEventArgs e)
         {
-            mainController.CopyCarData(new List<string> { "Silver Bullet" }, loggedInUserId);
+            mainController.SelectCarsForUser(new List<string> { "Silver Bullet" }, loggedInUserId);
+
         }
 
         private void lamboCarButton3_Click(object sender, RoutedEventArgs e)
         {
-            mainController.CopyCarData(new List<string> { "Black Panther" }, loggedInUserId);
+            mainController.SelectCarsForUser(new List<string> { "Black Panther" }, loggedInUserId);
+
         }
 
 

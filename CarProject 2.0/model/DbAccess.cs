@@ -26,11 +26,5 @@ namespace CarProject_2._0.model
             _mongoClient = new MongoClient("mongodb://localhost:27017");
             _database = _mongoClient.GetDatabase("TuningConfigurator");
         }
-
-        public void CreateCollection(string collectionName)
-        {
-            _database.CreateCollection(collectionName);
-            Console.WriteLine($"Collection {collectionName} created successfully");
-        }
     }
 }

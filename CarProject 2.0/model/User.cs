@@ -16,7 +16,9 @@ namespace CarProject_2._0.model
         public string Name { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
-        public int Balance { get; set; }
+        public int Balance { get; set; }    
+        public List<Car> cars { get; set; }
+        public List<Car> myCarCollectioList { get; set; } // Neue Liste für die ausgewählten Autos
 
         public User() { }
 
@@ -26,6 +28,7 @@ namespace CarProject_2._0.model
             Password = password;
             Role = role;
             Balance = balance;
+            myCarCollectioList = new List<Car>();
         }
     }
 }
