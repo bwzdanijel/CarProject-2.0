@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         
         
-                Title="MainWindow" Height="798" Width="1483">
+                Title="MainWindow" Height="798" Width="1483" ResizeMode="NoResize">
 
     <Window.Background>
         <ImageBrush ImageSource="\img\image.png"/>
@@ -76,18 +76,18 @@
                 <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
 
 
-                    <StackPanel Name="panelRedCar" Visibility="Visible" VerticalAlignment="Bottom">
-                        <Image Source="C:\Users\Student\Documents\IMS\Car\CarProject 2.0\img\carRed.png" Height="361" Width="495" />
+                    <StackPanel Name="panelRedCar" Visibility="Collapsed" VerticalAlignment="Bottom">
+                        <Image Source="\img\carRed.png" Height="361" Width="495" />
                         <Button x:Name="redCarButton1" Content="Selcet" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="118" Height="38" Margin="20,10,30,10" HorizontalAlignment="Center" Click="redCarButton1_Click"/>
                     </StackPanel>
 
                     <StackPanel Name="panelBlueCar" Visibility="Collapsed" VerticalAlignment="Bottom">
-                        <Image Source="C:\Users\Student\Documents\IMS\Car\CarProject 2.0\img\carBlue.png" Height="258" Width="495" />
+                        <Image Source="img\carBlue.png" Height="258" Width="495" />
                         <Button x:Name="bluCarButton2" Content="Selcet" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="118" Height="38" Margin="20,10,30,10" HorizontalAlignment="Center" Click="bluCarButton2_Click"/>
                     </StackPanel>
 
-                    <StackPanel Name="panelLamboCar" Visibility="Collapsed" VerticalAlignment="Bottom">
-                        <Image Source="C:\Users\Student\Documents\IMS\Car\CarProject 2.0\img\carLambo.png" Height="246" Width="483" />
+                    <StackPanel Name="panelLamboCar" Visibility="Visible" VerticalAlignment="Bottom">
+                        <Image Source="img\carLambo.png" Height="246" Width="483" />
                         <Button x:Name="lamboCarButton3" Content="Selcet" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="118" Height="38" Margin="20,10,30,10" HorizontalAlignment="Center" Click="lamboCarButton3_Click"/>
                     </StackPanel>
 
