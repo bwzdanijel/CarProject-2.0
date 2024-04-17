@@ -32,7 +32,7 @@
                     <Image Source="img\5206272.png" RenderTransformOrigin="-1.816,0.733" />
                 </Label>
 
-                <TextBox x:Name="usernameText" BorderBrush="Transparent" Foreground="White" SelectionBrush="Transparent" IsHitTestVisible="False" SelectionTextBrush="Transparent" Background="Transparent" Text="Bymidda187" Margin="10,10,10,10" FontSize="25" />
+                <TextBox x:Name="usernameText" BorderBrush="Transparent" Foreground="White" SelectionBrush="Transparent" IsHitTestVisible="False" SelectionTextBrush="Transparent" Background="Transparent" Text="Bymidda187" Margin="10,10,10,10" FontSize="25" TextChanged="usernameText_TextChanged" />
             </DockPanel>
 
 
@@ -140,7 +140,7 @@
 
 
                     <!--INVISIBLE   SPOILER   STACK PANEL-->
-                    <StackPanel Name="panelSpoiler" Visibility="Collapsed">
+                    <StackPanel Name="panelSpoiler" Visibility="Visible">
                         <DockPanel Margin="10" Height="91" Background="#FF7A6F63" Width="450">
                             <Label>
                                 <Image Source="\img\spoilerBlack.png" Width="141" />
@@ -257,7 +257,7 @@
         </StackPanel>
 
         <Grid Height="74" Width="1480" Margin="0,0,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-            <Button Content="Back" FontSize="25" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="159" Height="52" Margin="20,10,30,10" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Button Content="Back" FontSize="25" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="159" Height="52" Margin="20,10,30,10" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click" />
         </Grid>
 
     </Grid>

@@ -11,6 +11,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CarProject_2._0.controller;
 using CarProject_2._0.model;
+
+using System.Xml.Linq;
+
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -229,6 +232,14 @@ namespace CarProject_2._0
         }
 
         private void nitrous3_Click(object sender, RoutedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void usernameText_TextChanged(object sender, TextChangedEventArgs e)
+
         {
 
         }
