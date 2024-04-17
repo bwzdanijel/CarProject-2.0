@@ -23,10 +23,14 @@ namespace CarProject_2._0
     {
         private MainController mainController;
         private Guid loggedInUserId;
+        private string selectedCarName;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            DbAccess dbAccess = new DbAccess();
+            dbAccess.DbConnection();
             mainController = new MainController();
             mainController.InsertCars();
         }
@@ -141,34 +145,44 @@ namespace CarProject_2._0
 
         private void redCarButton1_Click(object sender, RoutedEventArgs e)
         {
-            mainController.CopyCarData(new List<string> { "Red Monster" }, loggedInUserId);
+            selectedCarName = "Red Monster";
+            engine1.Content = "use"; 
+            mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
         }
 
         private void bluCarButton2_Click(object sender, RoutedEventArgs e)
         {
-            mainController.CopyCarData(new List<string> { "Silver Bullet" }, loggedInUserId);
+            selectedCarName = "Silver Bullet";
+            engine2.Content = "use"; 
+            mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
         }
 
         private void lamboCarButton3_Click(object sender, RoutedEventArgs e)
         {
-            mainController.CopyCarData(new List<string> { "Black Panther" }, loggedInUserId);
+            selectedCarName = "Black Panther";
+            engine3.Content = "use"; 
+            mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
         }
+
 
 
         //ENGINE
         private void engine1_Click(object sender, RoutedEventArgs e)
         {
             engine1.Content = "use";
+            string carName = !string.IsNullOrEmpty(selectedCarName) ? selectedCarName : "DefaultCarName";
+            mainController.UpdateCarEngine(carName, "V6");
 
         }
         private void engine2_Click(object sender, RoutedEventArgs e)
         {
             engine2.Content = "use";
+            mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "Inline-4");
         }
 
         private void engine3_Click(object sender, RoutedEventArgs e)
         {
-            engine3.Content = "use";
+            mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "V10");
         }
 
 

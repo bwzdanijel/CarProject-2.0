@@ -39,5 +39,10 @@ namespace CarProject_2._0.controller
             carTuningPartModel.CopyCarData(carNames, userId);
         }
 
+        public void UpdateCarEngine(string carName, string engine)
+        {
+            carTuningPartModel.UpdateCarEngine(carName, engine);
+        }
+
     }
 }
