@@ -38,7 +38,7 @@ namespace CarProject_2._0.model
 
                 if (existingCar != null)
                 {
-                    Console.WriteLine($"Auto mit dem Namen '{car.Name}' bereits vorhanden.");
+                    
                 }
             }
         }
@@ -49,35 +49,43 @@ namespace CarProject_2._0.model
             return result;
         }
 
-        public void SelectCarsForUser(List<string> carNames, Guid userId)
+        public void CopyCarData(List<string> carNames, Guid userId)
         {
-            var userFilter = Builders<User>.Filter.Eq(u => u.Id, userId);
-            var userToUpdate = _userCollection.Find(userFilter).FirstOrDefault();
-
-            if (userToUpdate == null)
-            {
-                Console.WriteLine($"Benutzer mit der ID '{userId}' wurde nicht gefunden.");
-                return;
-            }
-
             foreach (var carName in carNames)
             {
-                var carFilter = Builders<Car>.Filter.Eq(c => c.Name, carName);
-                var carToSelect = _carCollection.Find(carFilter).FirstOrDefault();
+                try
+                {
+                    var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                    var carToCopy = _carCollection.Find(filter).FirstOrDefault();
 
-                if (carToSelect != null)
-                {
-                     userToUpdate.myCarCollectioList.Add(carToSelect);
+                    if (carToCopy != null)
+                    {
+                        var existingCarConfig = _carConfigurationCollection.Find(filter).FirstOrDefault();
+
+                        if (existingCarConfig == null)
+                        {
+                            carToCopy.Id = userId;
+                            _carConfigurationCollection.InsertOne(carToCopy);
+                            Console.WriteLine($"Das Auto mit dem Namen '{carName}' wurde erfolgreich in die CarConfiguration Collection kopiert.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Das Auto mit dem Namen '{carName}' befindet sich bereits in der CarConfiguration Collection.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Das Auto mit dem Namen '{carName}' wurde nicht in der Car Collection gefunden.");
+                    }
                 }
-                else
+                catch (MongoWriteException ex)
                 {
-                    Console.WriteLine($"Das Auto mit dem Namen '{carName}' wurde nicht in der Car Collection gefunden.");
+                    Console.WriteLine($"Fehler beim Kopieren des Autos '{carName}': {ex.Message}");
                 }
             }
-
-            var userUpdate = Builders<User>.Update.Set(u => u.myCarCollectioList, userToUpdate.myCarCollectioList);
-            _userCollection.UpdateOne(userFilter, userUpdate);
         }
+
+
     }
 }
 
