@@ -44,5 +44,25 @@ namespace CarProject_2._0.controller
             carTuningPartModel.UpdateCarEngine(carName, engine);
         }
 
+        public void UpdateCarSpoiler(string carName, string spoiler)
+        {
+            carTuningPartModel.UpdateCarSpoiler (carName, spoiler); 
+        }
+
+
+        public void UpdateCarBrake(string carName, string brake) 
+        {
+            carTuningPartModel.UpdateCarBrake (carName, brake);
+        }
+
+        public void UpdateCarTire(string carName, string tire)
+        {
+            carTuningPartModel.UpdateCarTire (carName, tire);   
+        }
+
+        public void UpdateCarNitrous(string carName, string nitrous)
+        {
+            carTuningPartModel.UpdateCarNitrous (carName, nitrous);
+        }
     }
 }

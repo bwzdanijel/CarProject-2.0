@@ -107,6 +107,82 @@ namespace CarProject_2._0.model
                 return false;
             }
         }
+
+
+
+        public bool UpdateCarSpoiler(string carName, string spoiler)
+        {
+            try
+            {
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                var update = Builders<Car>.Update.Set(u => u.TuningPart.Spoiler, spoiler);
+
+                var result = _carConfigurationCollection.UpdateOne(filter, update);
+
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"'{carName}': {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public bool UpdateCarBrake(string carName, string brake)
+        {
+            try
+            {
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                var update = Builders<Car>.Update.Set(u => u.TuningPart.Brake, brake);
+
+                var result = _carConfigurationCollection.UpdateOne(filter, update);
+
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"'{carName}': {ex.Message}");
+                return false;
+            }
+        }
+
+        public bool UpdateCarTire(string carName, string tire)
+        {
+            try
+            {
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                var update = Builders<Car>.Update.Set(u => u.TuningPart.Tires, tire);
+
+                var result = _carConfigurationCollection.UpdateOne(filter, update);
+
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"'{carName}': {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public bool UpdateCarNitrous(string carName, string nitrous)
+        {
+            try
+            {
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                var update = Builders<Car>.Update.Set(u => u.TuningPart.Nitrous, nitrous);
+
+                var result = _carConfigurationCollection.UpdateOne(filter, update);
+
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"'{carName}': {ex.Message}");
+                return false;
+            }
+        }
     }
 }
 
