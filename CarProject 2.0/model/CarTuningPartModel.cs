@@ -39,7 +39,7 @@ namespace CarProject_2._0.model
 
                 if (existingCar != null)
                 {
-                    Console.WriteLine($"Auto mit dem Namen '{car.Name}' bereits vorhanden.");
+                    
                 }
             }
         }
@@ -61,10 +61,18 @@ namespace CarProject_2._0.model
 
                     if (carToCopy != null)
                     {
-                        carToCopy.Id = userId;
+                        var existingCarConfig = _carConfigurationCollection.Find(filter).FirstOrDefault();
 
-                        _carConfigurationCollection.InsertOne(carToCopy);
-                        Console.WriteLine($"Das Auto mit dem Namen '{carName}' wurde erfolgreich in die CarConfiguration Collection kopiert.");
+                        if (existingCarConfig == null)
+                        {
+                            carToCopy.Id = userId;
+                            _carConfigurationCollection.InsertOne(carToCopy);
+                            Console.WriteLine($"Das Auto mit dem Namen '{carName}' wurde erfolgreich in die CarConfiguration Collection kopiert.");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Das Auto mit dem Namen '{carName}' befindet sich bereits in der CarConfiguration Collection.");
+                        }
                     }
                     else
                     {
@@ -77,6 +85,7 @@ namespace CarProject_2._0.model
                 }
             }
         }
+
 
     }
 }
