@@ -12,7 +12,6 @@ namespace CarProject_2._0.controller
         private CarTuningPartModel carTuningPartModel;
         private Car selectedCar;
 
-
         public MainController()
         {
             DbAccess dbAccess = new DbAccess();
@@ -40,5 +39,30 @@ namespace CarProject_2._0.controller
             carTuningPartModel.CopyCarData(carNames, userId);
         }
 
+        public void UpdateCarEngine(string carName, string engine)
+        {
+            carTuningPartModel.UpdateCarEngine(carName, engine);
+        }
+
+        public void UpdateCarSpoiler(string carName, string spoiler)
+        {
+            carTuningPartModel.UpdateCarSpoiler (carName, spoiler); 
+        }
+
+
+        public void UpdateCarBrake(string carName, string brake) 
+        {
+            carTuningPartModel.UpdateCarBrake (carName, brake);
+        }
+
+        public void UpdateCarTire(string carName, string tire)
+        {
+            carTuningPartModel.UpdateCarTire (carName, tire);   
+        }
+
+        public void UpdateCarNitrous(string carName, string nitrous)
+        {
+            carTuningPartModel.UpdateCarNitrous (carName, nitrous);
+        }
     }
 }
