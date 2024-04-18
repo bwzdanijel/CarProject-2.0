@@ -20,17 +20,23 @@ using MongoDB.Driver;
 namespace CarProject_2._0
 {
     public partial class MainWindow : Window
-    { 
+    {
         private MainController mainController;
         private Guid loggedInUserId;
+        private string selectedCarName;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            DbAccess dbAccess = new DbAccess();
+            dbAccess.DbConnection();
             mainController = new MainController();
             mainController.InsertCars();
         }
 
+
+      
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -135,38 +141,48 @@ namespace CarProject_2._0
 
 
         ////////////////Select Button/////////////////////////////////////////////////////////////////////////////////
-        
+
 
         private void redCarButton1_Click(object sender, RoutedEventArgs e)
         {
-            mainController.CopyCarData(new List<string> { "Red Monster" }, loggedInUserId);
+            selectedCarName = "Red Monster";
+            engine1.Content = "use"; 
+            mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
         }
 
         private void bluCarButton2_Click(object sender, RoutedEventArgs e)
         {
-            mainController.CopyCarData(new List<string> { "Silver Bullet" }, loggedInUserId);
+            selectedCarName = "Silver Bullet";
+            engine2.Content = "use"; 
+            mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
         }
 
         private void lamboCarButton3_Click(object sender, RoutedEventArgs e)
         {
-            mainController.CopyCarData(new List<string> { "Black Panther" }, loggedInUserId);
+            selectedCarName = "Black Panther";
+            engine3.Content = "use"; 
+            mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
         }
+
 
 
         //ENGINE
         private void engine1_Click(object sender, RoutedEventArgs e)
         {
             engine1.Content = "use";
+            mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "V6");
+
 
         }
         private void engine2_Click(object sender, RoutedEventArgs e)
         {
             engine2.Content = "use";
+            mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "Inline-4");
         }
 
         private void engine3_Click(object sender, RoutedEventArgs e)
         {
-            engine3.Content = "use";
+            mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "V10");
         }
 
 
@@ -174,62 +190,79 @@ namespace CarProject_2._0
         private void spoiler1_Click(object sender, RoutedEventArgs e)
         {
             spoiler1.Content = "use";
+            mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Carbon Fiber Spoiler");
+
         }
 
         private void spoiler2_Click(object sender, RoutedEventArgs e)
         {
             spoiler2.Content = "use";
+            mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Sport Spoiler");
+
         }
 
         private void spoiler3_Click(object sender, RoutedEventArgs e)
         {
             spoiler3.Content = "use";
+            mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Winged Rear Spoiler");
+
         }
 
 
         //BRAKE
         private void brake1_Click(object sender, RoutedEventArgs e)
         {
+            mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "Performance Carbon Ceramic Brake");
 
         }
 
         private void brake2_Click(object sender, RoutedEventArgs e)
         {
+            mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "Sport Performance Brake");
 
         }
 
         private void brake3_Click(object sender, RoutedEventArgs e)
         {
+            mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "High Performance Brake System");
 
         }
 
         //TIRES
         private void tires1_Click(object sender, RoutedEventArgs e)
         {
+            mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "Ultra Performance Tires");
+
         }
 
         private void tires2_Click(object sender, RoutedEventArgs e)
         {
+            mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "Sport Performance Tires");
 
         }
 
         private void tires3_Click(object sender, RoutedEventArgs e)
         {
+            mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "High Performance Tires");
+
         }
 
         //NITROUS
         private void nitrous1_Click(object sender, RoutedEventArgs e)
         {
+            mainController.UpdateCarNitrous(selectedCarName ?? "DefaultCarName", "20%");
 
         }
 
         private void nitrous2_Click(object sender, RoutedEventArgs e)
         {
+            mainController.UpdateCarNitrous(selectedCarName ?? "DefaultCarName", "60%");
 
         }
 
         private void nitrous3_Click(object sender, RoutedEventArgs e)
         {
+            mainController.UpdateCarNitrous(selectedCarName ?? "DefaultCarName", "100%");
 
         }
 

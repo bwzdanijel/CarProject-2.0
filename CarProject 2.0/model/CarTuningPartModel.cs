@@ -32,17 +32,20 @@ namespace CarProject_2._0.model
         {
             foreach (Car car in cars)
             {
-                _carCollection.InsertOne(car);
-
                 var filter = Builders<Car>.Filter.Eq(u => u.Name, car.Name);
                 var existingCar = _carCollection.Find(filter).FirstOrDefault();
 
-                if (existingCar != null)
+                if (existingCar == null)
                 {
-                    
+                    _carCollection.InsertOne(car);
+                }
+                else
+                {
+                    Console.WriteLine();
                 }
             }
         }
+
 
         public List<Car> GetAllCars()
         {
@@ -87,6 +90,99 @@ namespace CarProject_2._0.model
         }
 
 
+        public bool UpdateCarEngine(string carName, string engine)
+        {
+            try
+            {
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                var update = Builders<Car>.Update.Set(u => u.TuningPart.Engine, engine);
+
+                var result = _carConfigurationCollection.UpdateOne(filter, update);
+
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Fehler beim Aktualisieren des Motors des Autos '{carName}': {ex.Message}");
+                return false;
+            }
+        }
+
+
+
+        public bool UpdateCarSpoiler(string carName, string spoiler)
+        {
+            try
+            {
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                var update = Builders<Car>.Update.Set(u => u.TuningPart.Spoiler, spoiler);
+
+                var result = _carConfigurationCollection.UpdateOne(filter, update);
+
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"'{carName}': {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public bool UpdateCarBrake(string carName, string brake)
+        {
+            try
+            {
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                var update = Builders<Car>.Update.Set(u => u.TuningPart.Brake, brake);
+
+                var result = _carConfigurationCollection.UpdateOne(filter, update);
+
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"'{carName}': {ex.Message}");
+                return false;
+            }
+        }
+
+        public bool UpdateCarTire(string carName, string tire)
+        {
+            try
+            {
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                var update = Builders<Car>.Update.Set(u => u.TuningPart.Tires, tire);
+
+                var result = _carConfigurationCollection.UpdateOne(filter, update);
+
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"'{carName}': {ex.Message}");
+                return false;
+            }
+        }
+
+
+        public bool UpdateCarNitrous(string carName, string nitrous)
+        {
+            try
+            {
+                var filter = Builders<Car>.Filter.Eq(u => u.Name, carName);
+                var update = Builders<Car>.Update.Set(u => u.TuningPart.Nitrous, nitrous);
+
+                var result = _carConfigurationCollection.UpdateOne(filter, update);
+
+                return result.ModifiedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"'{carName}': {ex.Message}");
+                return false;
+            }
+        }
     }
 }
 
