@@ -266,34 +266,88 @@ namespace CarProject_2._0
         }
 
 
+        private string previousEngineButton = "";
+
+        private void UpdateEngineStatus(Button clickedEngineButton)
+        {
+            if (clickedEngineButton.Content.ToString() == "BUY")
+            {
+                clickedEngineButton.Content = "USE";
+            }
+            else if (clickedEngineButton.Content.ToString() == "USE")
+            {
+                clickedEngineButton.Content = "USED";
+            }
+
+            if (previousEngineButton != "")
+            {
+                Button previousButton = FindName(previousSpoilerButton) as Button;
+                if (previousButton != null && previousButton != clickedEngineButton)
+                {
+                    previousButton.Content = "USE";
+                }
+            }
+
+            previousEngineButton = clickedEngineButton.Name;
+        }
 
         //ENGINE
         private void engine1_Click(object sender, RoutedEventArgs e)
         {
-            engine1.Content = "use";
-            mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "V6");
+
+            UpdateEngineStatus(sender as Button);
 
 
-            progressPower.Value = progressPower.Value + 5;
+            if (engine1.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-1000);
+                DbConnection();
+            }
+            else if (engine1.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "Endgy Engine");
+                progressPower.Value = progressPower.Value + 5;
+            }
 
 
         }
         private void engine2_Click(object sender, RoutedEventArgs e)
         {
-            engine2.Content = "use";
-            mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "Inline-4");
+            UpdateEngineStatus(sender as Button);
 
-            progressPower.Value = progressPower.Value + 10;
-            progressAcceleration.Value = progressAcceleration.Value + 5;
+
+            if (engine2.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-17000);
+                DbConnection();
+            }
+            else if (engine2.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "Engunus Maximus");
+                progressPower.Value = progressPower.Value + 10;
+                progressAcceleration.Value = progressAcceleration.Value + 5;
+
+            }
+
         }
 
         private void engine3_Click(object sender, RoutedEventArgs e)
         {
-            mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "V10");
+            UpdateEngineStatus(sender as Button);
 
-            progressPower.Value = progressPower.Value + 20;
-            progressAcceleration.Value = progressAcceleration.Value + 10;
 
+            if (engine3.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-28000);
+                DbConnection();
+            }
+            else if (engine3.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "Engine Ultra Pro Max 5000");
+
+                progressPower.Value = progressPower.Value + 20;
+                progressAcceleration.Value = progressAcceleration.Value + 10;
+            }
         }
 
 
@@ -338,12 +392,10 @@ namespace CarProject_2._0
             }
             else if (spoiler1.Content.ToString() == "USED")
             {
-                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Carbon Fiber Spoiler");
+                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Spoily Spoiler");
+                progressPerformance.Value = progressPerformance.Value + 5;
+                progressPower.Value = progressPower.Value - 10;
             }
-
-            progressPerformance.Value = progressPerformance.Value + 5;
-            progressPower.Value = progressPower.Value - 10;
-
         }
 
         private void spoiler2_Click(object sender, RoutedEventArgs e)
@@ -358,13 +410,13 @@ namespace CarProject_2._0
             }
             else if(spoiler2.Content.ToString() == "USED")
             {
-                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Sport Spoiler");
+                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Spoilerus Maximus");
+                progressPerformance.Value = progressPerformance.Value + 10;
+                progressGrip.Value = progressGrip.Value + 10;
+                progressPower.Value = progressPower.Value - 15;
 
             }
 
-            progressPerformance.Value = progressPerformance.Value + 10;
-            progressGrip.Value = progressGrip.Value + 10;
-            progressPower.Value = progressPower.Value - 15;
 
         }
 
@@ -380,13 +432,13 @@ namespace CarProject_2._0
             }
             else if (spoiler3.Content.ToString() == "USED")
             {
-                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Winged Rear Spoiler");
-            }
+                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Spoily Ultra Pro Max 6000");
 
-            progressPerformance.Value = progressPerformance.Value + 25;
-            progressSteering.Value = progressSteering.Value + 10;
-            progressPower.Value = progressPower.Value - 15;
-            progressAcceleration.Value = progressAcceleration.Value - 5;
+                progressPerformance.Value = progressPerformance.Value + 25;
+                progressSteering.Value = progressSteering.Value + 10;
+                progressPower.Value = progressPower.Value - 15;
+                progressAcceleration.Value = progressAcceleration.Value - 5;
+            }
 
 
         }
@@ -398,57 +450,183 @@ namespace CarProject_2._0
 
 
         //BRAKE
+        private string previousBrakeButton = "";
+
+        private void UpdateBrakeStatus(Button clickedBrakeButton)
+        {
+            if (clickedBrakeButton.Content.ToString() == "BUY")
+            {
+                clickedBrakeButton.Content = "USE";
+            }
+            else if (clickedBrakeButton.Content.ToString() == "USE")
+            {
+                clickedBrakeButton.Content = "USED";
+            }
+
+            // Setze die anderen Buttons zurück
+            if (previousBrakeButton != "")
+            {
+                Button previousButton = FindName(previousBrakeButton) as Button;
+                if (previousButton != null && previousButton != clickedBrakeButton)
+                {
+                    previousButton.Content = "USE";
+                }
+            }
+
+            // Aktualisiere den vorherigen Button
+            previousBrakeButton = clickedBrakeButton.Name;
+        }
+
         private void brake1_Click(object sender, RoutedEventArgs e)
         {
-            mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "Performance Carbon Ceramic Brake");
+            UpdateBrakeStatus(sender as Button);
 
-            progressPerformance.Value = progressPerformance.Value + 5;
+
+            if (brake1.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-1000);
+                DbConnection();
+            }
+            else if (brake1.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "Breaky Brake");
+                progressPerformance.Value = progressPerformance.Value + 5;
+            }
 
         }
 
         private void brake2_Click(object sender, RoutedEventArgs e)
         {
-            mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "Sport Performance Brake");
+            UpdateBrakeStatus(sender as Button);
 
-            progressPerformance.Value = progressPerformance.Value + 10;
+
+            if (brake2.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-17000);
+                DbConnection();
+            }
+            else if (brake2.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Breaking King");
+                progressPerformance.Value = progressPerformance.Value + 10;
+
+            }
 
 
         }
 
         private void brake3_Click(object sender, RoutedEventArgs e)
         {
-            mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "High Performance Brake System");
+            UpdateBrakeStatus(sender as Button);
 
-            progressPerformance.Value = progressPerformance.Value + 15;
+
+            if (brake3.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-28000);
+                DbConnection();
+            }
+            else if (brake3.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Breakus Maximus");
+
+                progressPerformance.Value = progressPerformance.Value + 15;
+            }
 
 
         }
 
         //TIRES
+        private string previousTiresButton = "";
+
+        private void UpdateTiresStatus(Button clickedTiresButton)
+        {
+            if (clickedTiresButton.Content.ToString() == "BUY")
+            {
+                clickedTiresButton.Content = "USE";
+            }
+            else if (clickedTiresButton.Content.ToString() == "USE")
+            {
+                clickedTiresButton.Content = "USED";
+            }
+
+            // Setze die anderen Buttons zurück
+            if (previousTiresButton != "")
+            {
+                Button previousButton = FindName(previousTiresButton) as Button;
+                if (previousButton != null && previousButton != clickedTiresButton)
+                {
+                    previousButton.Content = "USE";
+                }
+            }
+
+            // Aktualisiere den vorherigen Button
+            previousTiresButton = clickedTiresButton.Name;
+        }
+
         private void tires1_Click(object sender, RoutedEventArgs e)
         {
-            mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "Ultra Performance Tires");
+            UpdateTiresStatus(sender as Button);
 
-            progressGrip.Value = progressGrip.Value + 10;
-            progressPerformance.Value = progressPerformance.Value + 5;
+
+            if (tires1.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-1000);
+                DbConnection();
+            }
+            else if (tires1.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "Spoily Spoiler");//name
+                progressGrip.Value = progressGrip.Value + 10;
+                progressPerformance.Value = progressPerformance.Value + 5;
+            }
+
+
         }
 
         private void tires2_Click(object sender, RoutedEventArgs e)
         {
-            mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "Sport Performance Tires");
+            UpdateTiresStatus(sender as Button);
 
-            progressGrip.Value = progressGrip.Value + 15;
-            progressPerformance.Value = progressPerformance.Value + 10;
+
+            if (tires2.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-17000);
+                DbConnection();
+            }
+            else if (tires2.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "Spoilerus Maximus");//name
+
+
+                progressGrip.Value = progressGrip.Value + 15;
+                progressPerformance.Value = progressPerformance.Value + 10;
+
+            }
+
         }
 
         private void tires3_Click(object sender, RoutedEventArgs e)
         {
-            mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "High Performance Tires");
+            UpdateTiresStatus(sender as Button);
 
-            progressGrip.Value = progressGrip.Value + 20;
-            progressPerformance.Value = progressPerformance.Value + 15;
+
+            if (tires3.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-28000);
+                DbConnection();
+            }
+            else if (tires3.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "Spoily Ultra Pro Max 6000");//Name
+
+                progressGrip.Value = progressGrip.Value + 20;
+                progressPerformance.Value = progressPerformance.Value + 15;
+            }
+
+
 
         }
+
 
         //NITROUS
         private void nitrous1_Click(object sender, RoutedEventArgs e)
