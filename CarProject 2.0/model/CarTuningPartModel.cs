@@ -25,7 +25,7 @@ namespace CarProject_2._0.model
             this.dbAccess = dbAccess;
             dbAccess.DbConnection();
             _carCollection = dbAccess.Database.GetCollection<Car>(collectionCar);
-            _carConfigurationCollection = dbAccess.Database.GetCollection<Car>(collectionCarConfiguration); // Initialisiere die CarConfiguration-Collection
+            _carConfigurationCollection = dbAccess.Database.GetCollection<Car>(collectionCarConfiguration);
         }
 
         public void AddCars(Car[] cars)

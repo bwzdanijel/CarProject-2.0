@@ -33,6 +33,7 @@ namespace CarProject_2._0
             dbAccess.DbConnection();
             mainController = new MainController();
             mainController.InsertCars();
+            mainController.InserUser();
         }
 
 
@@ -57,9 +58,39 @@ namespace CarProject_2._0
 
         }
 
+
+        /////////////////Balance 
+
+
+        public void DbConnection()
+        {
+            MongoClient client = new MongoClient("mongodb://localhost:27017");
+            IMongoDatabase database = client.GetDatabase("TuningConfigurator");
+            IMongoCollection<BsonDocument> collection = database.GetCollection<BsonDocument>("User");
+
+            var filter = Builders<BsonDocument>.Filter.Eq("Name", "player1");
+            var userDocument = collection.Find(filter).FirstOrDefault();
+
+            if (userDocument != null)
+            {
+                if (userDocument.TryGetValue("Balance", out BsonValue balanceValue))
+                {
+                    balanceText.Text = balanceValue.ToString();
+                }
+                else
+                {
+                    Console.WriteLine("Balance-Feld nicht gefunden");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Benutzer nicht gefunden");
+            }
+        }
+
         private void balanceText_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            DbConnection();
         }
 
         ////////////////Button Navigation List /////////////////////////////////////////////////////////////////////////////////
@@ -174,6 +205,7 @@ namespace CarProject_2._0
             engine1.Content = "use"; 
             mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
 
+
             //progressPower.Value = 20;
             //progressPerformance.Value = 40;
             //progressAcceleration.Value = 10;
@@ -187,6 +219,7 @@ namespace CarProject_2._0
             progressGrip.Value = grip1;
             progressSteering.Value = steering1;
             progressNitrous.Value = nitrous11;
+
         }
 
         private void bluCarButton2_Click(object sender, RoutedEventArgs e)
@@ -240,7 +273,9 @@ namespace CarProject_2._0
             engine1.Content = "use";
             mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "V6");
 
+
             progressPower.Value = progressPower.Value + 5;
+
 
         }
         private void engine2_Click(object sender, RoutedEventArgs e)
@@ -263,36 +298,103 @@ namespace CarProject_2._0
 
 
         //SPOILER
+
+        private string previousSpoilerButton = ""; 
+
+        private void UpdateSpoilerStatus(Button clickedSpoilerButton)
+        {
+            if (clickedSpoilerButton.Content.ToString() == "BUY")
+            {
+                clickedSpoilerButton.Content = "USE";
+            }
+            else if (clickedSpoilerButton.Content.ToString() == "USE")
+            {
+                clickedSpoilerButton.Content = "USED";
+            }
+
+            // Setze die anderen Buttons zurück
+            if (previousSpoilerButton != "")
+            {
+                Button previousButton = FindName(previousSpoilerButton) as Button;
+                if (previousButton != null && previousButton != clickedSpoilerButton)
+                {
+                    previousButton.Content = "USE";
+                }
+            }
+
+            // Aktualisiere den vorherigen Button
+            previousSpoilerButton = clickedSpoilerButton.Name;
+        }
+
         private void spoiler1_Click(object sender, RoutedEventArgs e)
         {
-            spoiler1.Content = "use";
-            mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Carbon Fiber Spoiler");
+            UpdateSpoilerStatus(sender as Button);
+
+
+            if (spoiler1.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-1000);
+                DbConnection();
+            }
+            else if (spoiler1.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Carbon Fiber Spoiler");
+            }
 
             progressPerformance.Value = progressPerformance.Value + 5;
             progressPower.Value = progressPower.Value - 10;
+
         }
 
         private void spoiler2_Click(object sender, RoutedEventArgs e)
         {
-            spoiler2.Content = "use";
-            mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Sport Spoiler");
+            UpdateSpoilerStatus(sender as Button);
+
+
+            if (spoiler2.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-17000);
+                DbConnection();
+            }
+            else if(spoiler2.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Sport Spoiler");
+
+            }
 
             progressPerformance.Value = progressPerformance.Value + 10;
             progressGrip.Value = progressGrip.Value + 10;
             progressPower.Value = progressPower.Value - 15;
+
         }
 
         private void spoiler3_Click(object sender, RoutedEventArgs e)
         {
-            spoiler3.Content = "use";
-            mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Winged Rear Spoiler");
+            UpdateSpoilerStatus(sender as Button);
+
+
+            if (spoiler3.Content.ToString() == "USE")
+            {
+                mainController.UpdateUserBalance(-28000);
+                DbConnection();
+            }
+            else if (spoiler3.Content.ToString() == "USED")
+            {
+                mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Winged Rear Spoiler");
+            }
 
             progressPerformance.Value = progressPerformance.Value + 25;
             progressSteering.Value = progressSteering.Value + 10;
             progressPower.Value = progressPower.Value - 15;
             progressAcceleration.Value = progressAcceleration.Value - 5;
 
+
         }
+
+
+
+
+
 
 
         //BRAKE
@@ -383,7 +485,21 @@ namespace CarProject_2._0
         private void usernameText_TextChanged(object sender, TextChangedEventArgs e)
 
         {
+            MongoClient client = new MongoClient("mongodb://localhost:27017");
+            IMongoDatabase database = client.GetDatabase("TuningConfigurator");
+            IMongoCollection<BsonDocument> collection = database.GetCollection<BsonDocument>("User");
 
+            var filter = Builders<BsonDocument>.Filter.Eq("Name", "player1");
+            var userDocument = collection.Find(filter).FirstOrDefault();
+
+            if (userDocument != null)
+            {
+                string username = userDocument.GetValue("Name").AsString;
+            }
+            else
+            {
+                Console.WriteLine("Benutzer nicht gefunden");
+            }
         }
 
         private void progressNitrous_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
