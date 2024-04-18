@@ -152,6 +152,8 @@ namespace CarProject_2._0
             panelBlueCar.Visibility = Visibility.Collapsed;
             panelLamboCar.Visibility = Visibility.Collapsed;
 
+            redCarButton1.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+
         }
 
         private void blueCarButton_Checked(object sender, RoutedEventArgs e)
@@ -159,6 +161,8 @@ namespace CarProject_2._0
             panelRedCar.Visibility = Visibility.Collapsed;
             panelBlueCar.Visibility = Visibility.Visible;
             panelLamboCar.Visibility = Visibility.Collapsed;
+
+            bluCarButton2.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
 
         }
 
@@ -168,17 +172,53 @@ namespace CarProject_2._0
             panelBlueCar.Visibility = Visibility.Collapsed;
             panelLamboCar.Visibility = Visibility.Visible;
 
+            lamboCarButton3.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         }
 
 
         ////////////////Select Button/////////////////////////////////////////////////////////////////////////////////
 
+        const int power1 = 20;
+        const int performance1 = 40;
+        const int acceleration1 = 10;
+        const int grip1 = 30;
+        const int steering1 = 45;
+        const int nitrous11 = 5;
+
+        const int power2 = 40;
+        const int performance2 = 50;
+        const int acceleration2 = 30;
+        const int grip2 = 45;
+        const int steering2 = 35;
+        const int nitrous22 = 20;
+
+        const int power3 = 60;
+        const int performance3 = 65;
+        const int acceleration3 = 50;
+        const int grip3 = 45;
+        const int steering3 = 55;
+        const int nitrous33 = 35;
 
         private void redCarButton1_Click(object sender, RoutedEventArgs e)
         {
             selectedCarName = "Red Monster";
             engine1.Content = "use"; 
             mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
+
+
+            //progressPower.Value = 20;
+            //progressPerformance.Value = 40;
+            //progressAcceleration.Value = 10;
+            //progressGrip.Value = 30;
+            //progressSteering.Value = 45;
+            //progressNitrous.Value = 5;
+
+            progressPower.Value = power1;
+            progressPerformance.Value = performance1;
+            progressAcceleration.Value = acceleration1;
+            progressGrip.Value = grip1;
+            progressSteering.Value = steering1;
+            progressNitrous.Value = nitrous11;
 
         }
 
@@ -187,6 +227,21 @@ namespace CarProject_2._0
             selectedCarName = "Silver Bullet";
             engine2.Content = "use"; 
             mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
+
+            //progressPower.Value = 40;
+            //progressPerformance.Value = 50;
+            //progressAcceleration.Value = 30;
+            //progressGrip.Value = 45;
+            //progressSteering.Value = 35;
+            //progressNitrous.Value = 20;
+
+            progressPower.Value = power2;
+            progressPerformance.Value = performance2;
+            progressAcceleration.Value = acceleration2;
+            progressGrip.Value = grip2;
+            progressSteering.Value = steering2;
+            progressNitrous.Value = nitrous22;
+
         }
 
         private void lamboCarButton3_Click(object sender, RoutedEventArgs e)
@@ -194,6 +249,20 @@ namespace CarProject_2._0
             selectedCarName = "Black Panther";
             engine3.Content = "use"; 
             mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
+
+            //progressPower.Value = 60;
+            //progressPerformance.Value = 65;
+            //progressAcceleration.Value = 50;
+            //progressGrip.Value = 45;
+            //progressSteering.Value = 55;
+            //progressNitrous.Value = 35;
+
+            progressPower.Value = power3;
+            progressPerformance.Value = performance3;
+            progressAcceleration.Value = acceleration3;
+            progressGrip.Value = grip3;
+            progressSteering.Value = steering3;
+            progressNitrous.Value = nitrous33;
         }
 
 
@@ -203,16 +272,28 @@ namespace CarProject_2._0
         {
             engine1.Content = "use";
             mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "V6");
+
+
+            progressPower.Value = progressPower.Value + 5;
+
+
         }
         private void engine2_Click(object sender, RoutedEventArgs e)
         {
             engine2.Content = "use";
             mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "Inline-4");
+
+            progressPower.Value = progressPower.Value + 10;
+            progressAcceleration.Value = progressAcceleration.Value + 5;
         }
 
         private void engine3_Click(object sender, RoutedEventArgs e)
         {
             mainController.UpdateCarEngine(selectedCarName ?? "DefaultCarName", "V10");
+
+            progressPower.Value = progressPower.Value + 20;
+            progressAcceleration.Value = progressAcceleration.Value + 10;
+
         }
 
 
@@ -249,6 +330,7 @@ namespace CarProject_2._0
         {
             UpdateSpoilerStatus(sender as Button);
 
+
             if (spoiler1.Content.ToString() == "USE")
             {
                 mainController.UpdateUserBalance(-1000);
@@ -258,11 +340,16 @@ namespace CarProject_2._0
             {
                 mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Carbon Fiber Spoiler");
             }
+
+            progressPerformance.Value = progressPerformance.Value + 5;
+            progressPower.Value = progressPower.Value - 10;
+
         }
 
         private void spoiler2_Click(object sender, RoutedEventArgs e)
         {
             UpdateSpoilerStatus(sender as Button);
+
 
             if (spoiler2.Content.ToString() == "USE")
             {
@@ -274,11 +361,17 @@ namespace CarProject_2._0
                 mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Sport Spoiler");
 
             }
+
+            progressPerformance.Value = progressPerformance.Value + 10;
+            progressGrip.Value = progressGrip.Value + 10;
+            progressPower.Value = progressPower.Value - 15;
+
         }
 
         private void spoiler3_Click(object sender, RoutedEventArgs e)
         {
             UpdateSpoilerStatus(sender as Button);
+
 
             if (spoiler3.Content.ToString() == "USE")
             {
@@ -289,6 +382,13 @@ namespace CarProject_2._0
             {
                 mainController.UpdateCarSpoiler(selectedCarName ?? "DefaultCarName", "Winged Rear Spoiler");
             }
+
+            progressPerformance.Value = progressPerformance.Value + 25;
+            progressSteering.Value = progressSteering.Value + 10;
+            progressPower.Value = progressPower.Value - 15;
+            progressAcceleration.Value = progressAcceleration.Value - 5;
+
+
         }
 
 
@@ -302,17 +402,25 @@ namespace CarProject_2._0
         {
             mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "Performance Carbon Ceramic Brake");
 
+            progressPerformance.Value = progressPerformance.Value + 5;
+
         }
 
         private void brake2_Click(object sender, RoutedEventArgs e)
         {
             mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "Sport Performance Brake");
 
+            progressPerformance.Value = progressPerformance.Value + 10;
+
+
         }
 
         private void brake3_Click(object sender, RoutedEventArgs e)
         {
             mainController.UpdateCarBrake(selectedCarName ?? "DefaultCarName", "High Performance Brake System");
+
+            progressPerformance.Value = progressPerformance.Value + 15;
+
 
         }
 
@@ -321,17 +429,24 @@ namespace CarProject_2._0
         {
             mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "Ultra Performance Tires");
 
+            progressGrip.Value = progressGrip.Value + 10;
+            progressPerformance.Value = progressPerformance.Value + 5;
         }
 
         private void tires2_Click(object sender, RoutedEventArgs e)
         {
             mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "Sport Performance Tires");
 
+            progressGrip.Value = progressGrip.Value + 15;
+            progressPerformance.Value = progressPerformance.Value + 10;
         }
 
         private void tires3_Click(object sender, RoutedEventArgs e)
         {
             mainController.UpdateCarTire(selectedCarName ?? "DefaultCarName", "High Performance Tires");
+
+            progressGrip.Value = progressGrip.Value + 20;
+            progressPerformance.Value = progressPerformance.Value + 15;
 
         }
 
@@ -340,11 +455,15 @@ namespace CarProject_2._0
         {
             mainController.UpdateCarNitrous(selectedCarName ?? "DefaultCarName", "20%");
 
+            progressNitrous.Value = progressNitrous.Value + 20;
+
         }
 
         private void nitrous2_Click(object sender, RoutedEventArgs e)
         {
             mainController.UpdateCarNitrous(selectedCarName ?? "DefaultCarName", "60%");
+
+            progressNitrous.Value = progressNitrous.Value + 60;
 
         }
 
@@ -352,7 +471,11 @@ namespace CarProject_2._0
         {
             mainController.UpdateCarNitrous(selectedCarName ?? "DefaultCarName", "100%");
 
+            progressNitrous.Value = progressNitrous.Value + 100;
         }
+
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -377,6 +500,16 @@ namespace CarProject_2._0
             {
                 Console.WriteLine("Benutzer nicht gefunden");
             }
+        }
+
+        private void progressNitrous_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void progressPower_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }
