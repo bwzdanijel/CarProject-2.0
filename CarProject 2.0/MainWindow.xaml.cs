@@ -28,15 +28,9 @@ namespace CarProject_2._0
         {
             InitializeComponent();
             mainController = new MainController();
+            mainController.InsertCars();
         }
 
-        public MainWindow(Guid userId)
-        {
-            InitializeComponent();
-            mainController = new MainController();
-            loggedInUserId = userId;
-
-        }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
