@@ -46,7 +46,7 @@
                 <StackPanel Grid.Column="0">
                     <WrapPanel Height="44">
                         <Label Height="41" Width="176" Content="Power" Foreground="White" FontSize="22" />
-                        <ProgressBar Height="26" Name="progressPower" Width="220" Value="0" Maximum="100" Background="#FFC5C5C5" Foreground="#FF2930DF" BorderBrush="Black" />
+                        <ProgressBar Height="26" Name="progressPower" Width="220" Value="0" Maximum="100" Background="#FFC5C5C5" Foreground="#FF2930DF" BorderBrush="Black" ValueChanged="progressPower_ValueChanged" />
                     </WrapPanel>
                     <WrapPanel Height="44">
                         <Label Height="41" Width="176" Content="Performance" Foreground="White" FontSize="22" />
@@ -66,7 +66,7 @@
                     </WrapPanel>
                     <WrapPanel Height="44">
                         <Label Height="41" Width="176" Content="Nitrous" Foreground="White" FontSize="22" />
-                        <ProgressBar Height="26" Name="progressNitrous" Width="220" Value="0" Maximum="100" Background="#FFC5C5C5" Foreground="#FF2930DF" BorderBrush="Black"/>
+                        <ProgressBar Height="26" Name="progressNitrous" Width="220" Value="0" Maximum="100" Background="#FFC5C5C5" Foreground="#FF2930DF" BorderBrush="Black" ValueChanged="progressNitrous_ValueChanged"/>
                     </WrapPanel>
                 </StackPanel>
 
@@ -78,27 +78,73 @@
 
                     <StackPanel Name="panelRedCar" Visibility="Collapsed" VerticalAlignment="Bottom">
                         <Image Source="\img\carRed.png" Height="361" Width="495" />
-                        <Button x:Name="redCarButton1" Content="Selcet" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="118" Height="38" Margin="20,10,30,10" HorizontalAlignment="Center" Click="redCarButton1_Click"/>
+                        <Button x:Name="redCarButton1" Visibility="Collapsed" Content="Selcet" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="118" Height="38" Margin="20,10,30,10" HorizontalAlignment="Center" Click="redCarButton1_Click"/>
                     </StackPanel>
 
                     <StackPanel Name="panelBlueCar" Visibility="Collapsed" VerticalAlignment="Bottom">
                         <Image Source="img\carBlue.png" Height="258" Width="495" />
-                        <Button x:Name="bluCarButton2" Content="Selcet" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="118" Height="38" Margin="20,10,30,10" HorizontalAlignment="Center" Click="bluCarButton2_Click"/>
+                        <Button x:Name="bluCarButton2" Visibility="Collapsed" Content="Selcet" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="118" Height="38" Margin="20,10,30,10" HorizontalAlignment="Center" Click="bluCarButton2_Click"/>
                     </StackPanel>
 
                     <StackPanel Name="panelLamboCar" Visibility="Visible" VerticalAlignment="Bottom">
                         <Image Source="img\carLambo.png" Height="246" Width="483" />
-                        <Button x:Name="lamboCarButton3" Content="Selcet" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="118" Height="38" Margin="20,10,30,10" HorizontalAlignment="Center" Click="lamboCarButton3_Click"/>
+                        <Button x:Name="lamboCarButton3" Visibility="Collapsed" Content="Selcet" FontSize="20" FontWeight="Bold" Foreground="White" BorderBrush="#FF092033" Background="#FF092033" Width="118" Height="38" Margin="20,10,30,10" HorizontalAlignment="Center" Click="lamboCarButton3_Click"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Height="32" HorizontalAlignment="Center">
-                        <RadioButton x:Name="redCarButton" Height="40" Width="30" Checked="redCarButton_Checked" />
-                        <RadioButton x:Name="blueCarButton" Height="40" Width="30" Checked="blueCarButton_Checked"/>
-                        <RadioButton x:Name="lamboCarButton" Height="40" Width="30" Checked="lamboCarButton_Checked" />
+
+
+                        <RadioButton x:Name="redCarButton" Height="40" Width="30" Checked="redCarButton_Checked" FontSize="10000" Background="#FF8CB7ED" >
+                            <RadioButton.Template>
+                                <ControlTemplate TargetType="RadioButton">
+                                    <Grid>
+                                        <Ellipse x:Name="BackgroundEllipse" Fill="{TemplateBinding Background}" Width="24" Height="24"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="BackgroundEllipse" Property="Fill" Value="#FF092033"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </RadioButton.Template>
+                        </RadioButton>
+
+
+                        <RadioButton x:Name="blueCarButton" Height="40" Width="30" Checked="blueCarButton_Checked" Background="#FF8CB7ED">
+                            <RadioButton.Template>
+                                <ControlTemplate TargetType="RadioButton">
+                                    <Grid>
+                                        <Ellipse x:Name="BackgroundEllipse" Fill="{TemplateBinding Background}" Width="24" Height="24"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="BackgroundEllipse" Property="Fill" Value="#FF092033"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </RadioButton.Template>
+                        </RadioButton>
+
+                        <RadioButton x:Name="lamboCarButton" Height="40" Width="30" Checked="lamboCarButton_Checked" Background="#FF8CB7ED">
+                            <RadioButton.Template>
+                                <ControlTemplate TargetType="RadioButton">
+                                    <Grid>
+                                        <Ellipse x:Name="BackgroundEllipse" Fill="{TemplateBinding Background}" Width="24" Height="24"/>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="BackgroundEllipse" Property="Fill" Value="#FF092033"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </RadioButton.Template>
+                        </RadioButton>
                     </StackPanel>
 
                 </StackPanel>
-
 
 
 

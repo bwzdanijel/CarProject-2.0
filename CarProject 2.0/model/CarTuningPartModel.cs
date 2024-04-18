@@ -70,21 +70,20 @@ namespace CarProject_2._0.model
                         {
                             carToCopy.Id = userId;
                             _carConfigurationCollection.InsertOne(carToCopy);
-                            Console.WriteLine($"Das Auto mit dem Namen '{carName}' wurde erfolgreich in die CarConfiguration Collection kopiert.");
                         }
                         else
                         {
-                            Console.WriteLine($"Das Auto mit dem Namen '{carName}' befindet sich bereits in der CarConfiguration Collection.");
+                            Console.WriteLine($" '{carName}' already exitsts");
                         }
                     }
                     else
                     {
-                        Console.WriteLine($"Das Auto mit dem Namen '{carName}' wurde nicht in der Car Collection gefunden.");
+                        Console.WriteLine($" '{carName}' not found");
                     }
                 }
                 catch (MongoWriteException ex)
                 {
-                    Console.WriteLine($"Fehler beim Kopieren des Autos '{carName}': {ex.Message}");
+                    Console.WriteLine($"Error '{carName}': {ex.Message}");
                 }
             }
         }
