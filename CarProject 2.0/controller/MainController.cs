@@ -1,4 +1,6 @@
 ﻿using CarProject_2._0.model;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +12,17 @@ namespace CarProject_2._0.controller
     public class MainController
     {
         private CarTuningPartModel carTuningPartModel;
-        private Car selectedCar;
+        private UserModel userModel;
 
         public MainController()
         {
             DbAccess dbAccess = new DbAccess();
             carTuningPartModel = new CarTuningPartModel(dbAccess);
+            userModel = new UserModel(dbAccess);
         }
+
+
+        // Collection Car
         public void InsertCars()
         {
 
@@ -33,7 +39,33 @@ namespace CarProject_2._0.controller
             Car[] CarsToInsert = new Car[] { car1, car2, car3 };
             carTuningPartModel.AddCars(CarsToInsert);
         }
-        
+
+
+
+        //Collection User
+
+        public void InserUser()
+        {
+            User user1 = new("player1", 1000000000);
+            userModel.AddUser(user1);
+        }
+
+        public User GetUser()
+        {
+            return userModel.GetUser();
+        }
+
+        public void UpdateUserBalance(int amount)
+        {
+            userModel.UpdateUserBalance(amount);
+        }
+
+
+
+
+
+
+        //Collection CarConfuration
         public void CopyCarData (List<string> carNames, Guid userId)
         {
             carTuningPartModel.CopyCarData(carNames, userId);
@@ -63,6 +95,11 @@ namespace CarProject_2._0.controller
         public void UpdateCarNitrous(string carName, string nitrous)
         {
             carTuningPartModel.UpdateCarNitrous (carName, nitrous);
+     
         }
+
+
+
+        
     }
 }
