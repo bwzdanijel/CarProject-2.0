@@ -102,7 +102,7 @@ namespace CarProject_2._0.model
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Fehler beim Aktualisieren des Motors des Autos '{carName}': {ex.Message}");
+                Console.WriteLine($"Error updting car '{carName}': {ex.Message}");
                 return false;
             }
         }
@@ -159,7 +159,6 @@ namespace CarProject_2._0.model
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"'{carName}': {ex.Message}");
                 return false;
             }
         }
@@ -178,7 +177,6 @@ namespace CarProject_2._0.model
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"'{carName}': {ex.Message}");
                 return false;
             }
         }
