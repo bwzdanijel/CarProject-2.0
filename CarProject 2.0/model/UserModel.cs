@@ -46,18 +46,10 @@ namespace CarProject_2._0.model
         }
 
 
-        public void UpdateUser(User user)
-        {
-            user = user;
-        }
-
 
         private string GetCurrentUsername()
         {
-            // Hier könntest du die Logik implementieren, um den Benutzernamen dynamisch zu erhalten,
-            // zum Beispiel aus der aktuellen Benutzersitzung, aus dem Token, etc.
-            // Rückgabe des Benutzernamens
-            return "player1"; // Beispiel: Rückgabe des Benutzernamens "player1"
+            return "player1";
         }
 
         public void UpdateUserBalance(int amount)
@@ -74,7 +66,7 @@ namespace CarProject_2._0.model
             }
             else
             {
-                Console.WriteLine("Benutzer nicht gefunden.");
+                Console.WriteLine("user not found");
             }
         }
     }

@@ -43,12 +43,7 @@ namespace CarProject_2._0
         {
             teststackPanel.Visibility = Visibility.Visible;
 
-            /*
-            Console.WriteLine("The list of databases on this server is: ");
-            foreach (var db in dbList)
-            {
-                Console.WriteLine(db);
-            }*/
+
         }
 
 
@@ -205,14 +200,6 @@ namespace CarProject_2._0
             engine1.Content = "use"; 
             mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
 
-
-            //progressPower.Value = 20;
-            //progressPerformance.Value = 40;
-            //progressAcceleration.Value = 10;
-            //progressGrip.Value = 30;
-            //progressSteering.Value = 45;
-            //progressNitrous.Value = 5;
-
             progressPower.Value = power1;
             progressPerformance.Value = performance1;
             progressAcceleration.Value = acceleration1;
@@ -228,13 +215,6 @@ namespace CarProject_2._0
             engine2.Content = "use"; 
             mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
 
-            //progressPower.Value = 40;
-            //progressPerformance.Value = 50;
-            //progressAcceleration.Value = 30;
-            //progressGrip.Value = 45;
-            //progressSteering.Value = 35;
-            //progressNitrous.Value = 20;
-
             progressPower.Value = power2;
             progressPerformance.Value = performance2;
             progressAcceleration.Value = acceleration2;
@@ -249,13 +229,6 @@ namespace CarProject_2._0
             selectedCarName = "Black Panther";
             engine3.Content = "use"; 
             mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
-
-            //progressPower.Value = 60;
-            //progressPerformance.Value = 65;
-            //progressAcceleration.Value = 50;
-            //progressGrip.Value = 45;
-            //progressSteering.Value = 55;
-            //progressNitrous.Value = 35;
 
             progressPower.Value = power3;
             progressPerformance.Value = performance3;
@@ -309,14 +282,9 @@ namespace CarProject_2._0
 
                 progressPower.Value = progressPower.Value + 5;
 
-                //progressPower.Value = power1 + 5;
-                //progressPower.Value = power2 + 5;
-                //progressPower.Value = power3 + 5;
-
             }
-
-
         }
+
         private void engine2_Click(object sender, RoutedEventArgs e)
         {
             UpdateEngineStatus(sender as Button);
@@ -333,9 +301,6 @@ namespace CarProject_2._0
 
                 progressPower.Value = progressPower.Value + 10;
                 progressAcceleration.Value = progressAcceleration.Value + 5;
-
-
-
             }
 
         }
@@ -422,8 +387,6 @@ namespace CarProject_2._0
                 progressPower.Value = progressPower.Value - 15;
 
             }
-
-
         }
 
         private void spoiler3_Click(object sender, RoutedEventArgs e)
@@ -446,14 +409,7 @@ namespace CarProject_2._0
                 progressAcceleration.Value = progressAcceleration.Value - 5;
             }
 
-
         }
-
-
-
-
-
-
 
         //BRAKE
         private string previousBrakeButton = "";
@@ -469,7 +425,6 @@ namespace CarProject_2._0
                 clickedBrakeButton.Content = "USED";
             }
 
-            // Setze die anderen Buttons zurück
             if (previousBrakeButton != "")
             {
                 Button previousButton = FindName(previousBrakeButton) as Button;
@@ -479,7 +434,6 @@ namespace CarProject_2._0
                 }
             }
 
-            // Aktualisiere den vorherigen Button
             previousBrakeButton = clickedBrakeButton.Name;
         }
 
@@ -555,7 +509,6 @@ namespace CarProject_2._0
                 clickedTiresButton.Content = "USED";
             }
 
-            // Setze die anderen Buttons zurück
             if (previousTiresButton != "")
             {
                 Button previousButton = FindName(previousTiresButton) as Button;
@@ -565,7 +518,6 @@ namespace CarProject_2._0
                 }
             }
 
-            // Aktualisiere den vorherigen Button
             previousTiresButton = clickedTiresButton.Name;
         }
 
@@ -747,12 +699,10 @@ namespace CarProject_2._0
 
         private void progressNitrous_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
         }
 
         private void progressPower_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
         }
     }
 }
