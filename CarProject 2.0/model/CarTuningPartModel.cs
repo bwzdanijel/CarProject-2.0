@@ -53,7 +53,7 @@ namespace CarProject_2._0.model
             return result;
         }
 
-        public void CopyCarData(List<string> carNames, Guid userId)
+        public void CopyCarData(List<string> carNames)
         {
             foreach (var carName in carNames)
             {
@@ -68,7 +68,6 @@ namespace CarProject_2._0.model
 
                         if (existingCarConfig == null)
                         {
-                            carToCopy.Id = userId;
                             _carConfigurationCollection.InsertOne(carToCopy);
                         }
                         else

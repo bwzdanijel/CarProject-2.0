@@ -22,7 +22,7 @@ namespace CarProject_2._0
     public partial class MainWindow : Window
     {
         private MainController mainController;
-        private Guid loggedInUserId;
+        //private Guid loggedInUserId;
         private string selectedCarName;
 
         public MainWindow()
@@ -198,7 +198,7 @@ namespace CarProject_2._0
         {
             selectedCarName = "Red Monster";
             engine1.Content = "use"; 
-            mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
+            mainController.CopyCarData(new List<string> { selectedCarName });
 
             progressPower.Value = power1;
             progressPerformance.Value = performance1;
@@ -213,7 +213,7 @@ namespace CarProject_2._0
         {
             selectedCarName = "Silver Bullet";
             engine2.Content = "use"; 
-            mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
+            mainController.CopyCarData(new List<string> { selectedCarName });
 
             progressPower.Value = power2;
             progressPerformance.Value = performance2;
@@ -228,7 +228,7 @@ namespace CarProject_2._0
         {
             selectedCarName = "Black Panther";
             engine3.Content = "use"; 
-            mainController.CopyCarData(new List<string> { selectedCarName }, loggedInUserId);
+            mainController.CopyCarData(new List<string> { selectedCarName });
 
             progressPower.Value = power3;
             progressPerformance.Value = performance3;

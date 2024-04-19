@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,5 +70,25 @@ namespace CarProject_2._0.model
                 Console.WriteLine("user not found");
             }
         }
+
+        public bool UserExistsInDatabase(string username)
+        {
+            MongoClient client = new MongoClient("mongodb://localhost:27017");
+            IMongoDatabase database = client.GetDatabase("TuningConfigurator");
+            IMongoCollection<BsonDocument> collection = database.GetCollection<BsonDocument>("User");
+
+            var filter = Builders<BsonDocument>.Filter.Eq("Name", username);
+            var userDocument = collection.Find(filter).FirstOrDefault();
+
+            return userDocument != null; 
+        }
+
+
+        public void DeleteUser(string username)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u.Name, username);
+            _userCollection.DeleteOne(filter);
+        }
+
     }
 }
