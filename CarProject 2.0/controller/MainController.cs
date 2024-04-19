@@ -66,9 +66,9 @@ namespace CarProject_2._0.controller
 
 
         //Collection CarConfuration
-        public void CopyCarData (List<string> carNames, Guid userId)
+        public void CopyCarData (List<string> carNames)
         {
-            carTuningPartModel.CopyCarData(carNames, userId);
+            carTuningPartModel.CopyCarData(carNames);
         }
 
         public void UpdateCarEngine(string carName, string engine)
@@ -97,9 +97,12 @@ namespace CarProject_2._0.controller
             carTuningPartModel.UpdateCarNitrous (carName, nitrous);
      
         }
-
-
-
-        
     }
+
+
+
+
+
+
+
 }
